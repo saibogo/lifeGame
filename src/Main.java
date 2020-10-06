@@ -1,3 +1,4 @@
+import controllers.BorderRules;
 import controllers.Rules;
 import models.Board;
 import models.CellsType;
@@ -12,11 +13,10 @@ public class Main {
 
         System.out.println(board);
         System.out.println();
-        Rules.mainRule(board);
+        Rules.iteration(board);
 
         System.out.println(board);
-        Rules.newGeneration(board);
 
-        System.out.println(board);
+        System.out.println(BorderRules.needAddLeftBorder(board));
     }
 }

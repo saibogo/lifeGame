@@ -36,4 +36,9 @@ public class Rules {
             }
         }
     }
+
+    public static void iteration(Board board) {
+        mainRule(board);
+        newGeneration(board);
+    }
 }
