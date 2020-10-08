@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
+
+    private static long minimalHeight = 2;
+    private static long minimalWidth = 2;
+
     private long height;
     private long width;
     private List<List<CellsType>> boardList;
@@ -69,11 +73,92 @@ public class Board {
         return count;
     }
 
+    public void addLeftColumn() {
+        for (long i = 0; i < this.height; i++) {
+            this.boardList.get((int)i).add(0, CellsType.EMPTY);
+        }
+        this.width++;
+    }
+
+    public void addRightColumn() {
+        for (long i = 0; i < this.height; i++) {
+            this.boardList.get((int)i).add(CellsType.EMPTY);
+        }
+        this.width++;
+    }
+
+    public void addTopLine() {
+        List<CellsType> tmpList = new ArrayList();
+        for (long j = 0; j < this.width; j++) {
+            tmpList.add(CellsType.EMPTY);
+        }
+        this.boardList.add(0, tmpList);
+        this.height++;
+    }
+
+    public void addBottomLine() {
+        List<CellsType> tmpList = new ArrayList();
+        for (long j = 0; j < this.width; j++) {
+            tmpList.add(CellsType.EMPTY);
+        }
+        this.boardList.add(tmpList);
+        this.height++;
+    }
+
+    public void removeTopLine() {
+        try {
+            if (this.height > minimalHeight) {
+                this.boardList.remove(0);
+                this.height--;
+            }
+        } catch (IndexOutOfBoundsException ignored) {
+
+        }
+    }
+
+    public void removeBottomLine() {
+        try {
+            if (this.height > minimalHeight) {
+                this.boardList.remove((int) this.height - 1);
+                this.height--;
+            }
+        } catch (IndexOutOfBoundsException ignored) {
+
+        }
+    }
+
+    public void removeLeftLine() {
+        try {
+            if (this.width > minimalWidth) {
+                for (int i = 0; i < this.height; i++) {
+                    this.boardList.get(i).remove(0);
+                }
+                this.width--;
+            }
+
+        } catch (IndexOutOfBoundsException ignored) {
+
+        }
+    }
+
+    public void removeRightLine() {
+        try {
+            if (this.width > minimalWidth) {
+                for (int i = 0; i < this.height; i++) {
+                    this.boardList.get(i).remove((int) this.width - 1);
+                }
+                this.width--;
+            }
+        } catch (IndexOutOfBoundsException ignored) {
+
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        for (long i = 0; i < this.height; i++) {
-            for (long j = 0; j < this.width; j++) {
+        for (long i = 0; i < this.boardList.size(); i++) {
+            for (long j = 0; j < this.boardList.get(0).size(); j++) {
                 builder.append(this.boardList.get((int)i).get((int)j));
             }
             builder.append("\n");

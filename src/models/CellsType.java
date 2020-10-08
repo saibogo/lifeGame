@@ -4,22 +4,22 @@ public enum CellsType {
     LIVE {
         @Override
         public String toString() {
-            return "@";
+            return (char)27 + "[31m" + "#" + (char)27 + "[37m" + "|";
         }
     }, DEAD {
         @Override
         public String toString() {
-            return "&";
+            return ".|";
         }
     }, BORN {
         @Override
         public String toString() {
-            return ".";
+            return "@|";
         }
     }, EMPTY {
         @Override
         public String toString() {
-            return "_";
+            return "_|";
         }
     };
 }
