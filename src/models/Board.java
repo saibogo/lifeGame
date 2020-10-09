@@ -5,16 +5,15 @@ import java.util.List;
 
 public class Board {
 
-    private static long minimalHeight = 2;
-    private static long minimalWidth = 2;
-
     private long height;
     private long width;
     private List<List<CellsType>> boardList;
+    private Constants constants;
 
-    public Board(long height, long width) {
+    public Board(long height, long width, Constants constants) {
         this.height = height;
         this.width = width;
+        this.constants = constants;
         boardList = new ArrayList<>();
         for (long i = 0; i < height; i++) {
             List<CellsType> tmpList = new ArrayList<>();
@@ -26,7 +25,13 @@ public class Board {
     }
 
     public Board() {
-        this(5, 5);
+        this(5,
+                5,
+                (new Constants.Builder()).
+                setSleepInterval(700).
+                setMinimalWidth(3).
+                setMinimalHeight(3).
+                build());
     }
 
     public long getHeight() {
@@ -107,7 +112,7 @@ public class Board {
 
     public void removeTopLine() {
         try {
-            if (this.height > minimalHeight) {
+            if (this.height > this.constants.getMinimalHeight()) {
                 this.boardList.remove(0);
                 this.height--;
             }
@@ -118,7 +123,7 @@ public class Board {
 
     public void removeBottomLine() {
         try {
-            if (this.height > minimalHeight) {
+            if (this.height > this.constants.getMinimalHeight()) {
                 this.boardList.remove((int) this.height - 1);
                 this.height--;
             }
@@ -129,7 +134,7 @@ public class Board {
 
     public void removeLeftLine() {
         try {
-            if (this.width > minimalWidth) {
+            if (this.width > this.constants.getMinimalWidth()) {
                 for (int i = 0; i < this.height; i++) {
                     this.boardList.get(i).remove(0);
                 }
@@ -143,7 +148,7 @@ public class Board {
 
     public void removeRightLine() {
         try {
-            if (this.width > minimalWidth) {
+            if (this.width > this.constants.getMinimalWidth()) {
                 for (int i = 0; i < this.height; i++) {
                     this.boardList.get(i).remove((int) this.width - 1);
                 }
@@ -157,6 +162,7 @@ public class Board {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
+        builder.append(Constants.whiteString);
         for (long i = 0; i < this.boardList.size(); i++) {
             for (long j = 0; j < this.boardList.get(0).size(); j++) {
                 builder.append(this.boardList.get((int)i).get((int)j));

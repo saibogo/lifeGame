@@ -1,36 +1,49 @@
+import java.util.Calendar;
+
 import controllers.BorderRules;
+import controllers.InsertFigureToBoardController;
 import controllers.Rules;
 import models.Board;
-import models.CellsType;
+import models.Constants;
+import models.figures.Figure;
+import models.figures.HorizontalSemaphore;
+import models.figures.Square2_2;
+import models.figures.VerticalSemaphore;
 
-import java.sql.Time;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
-        Board board = new Board(10, 10);
-        board.setCell(CellsType.LIVE, 2, 4);
-        board.setCell(CellsType.LIVE, 3, 5);
-        board.setCell(CellsType.LIVE, 4, 3);
-        board.setCell(CellsType.LIVE, 4, 4);
-        board.setCell(CellsType.LIVE, 4, 5);
-        board.setCell(CellsType.LIVE, 3, 7);
-        board.setCell(CellsType.LIVE, 3, 8);
-        board.setCell(CellsType.LIVE, 4, 7);
-        board.setCell(CellsType.LIVE, 4, 8);
-        BorderRules.addBorderIfNeed(board);
-        BorderRules.removeBordersIfNeed(board);
+
+        Constants constants = (new Constants.Builder())
+                .setMinimalHeight(3)
+                .setMinimalWidth(3)
+                .setSleepInterval(700)
+                .build();
+
+        long timeStart, timeStop;
 
 
-        for (int iteration = 0; iteration < 50; iteration++) {
-            System.out.println(board);
-            System.out.println();
-            System.out.println(board.getHeight() + " * " + board.getWidth() + "\n");
-            Thread.sleep(1000);
+        Figure square1 = new Square2_2();
+        Figure horizontalSemaphore = new HorizontalSemaphore();
+        Figure verticalSemaphore = new VerticalSemaphore();
+        System.out.println(verticalSemaphore);
+        Board board = new Board(5, 5, constants);
+        InsertFigureToBoardController.insert(board, square1, 2, 2);
+        InsertFigureToBoardController.insert(board, horizontalSemaphore, 0, 0);
+        InsertFigureToBoardController.insert(board, verticalSemaphore, 2, 0);
+
+        System.out.println(board);
+
+        for (long iteration = 0; iteration < 400; iteration++) {
+            timeStart = Calendar.getInstance().getTimeInMillis();
             Rules.iteration(board);
             BorderRules.addBorderIfNeed(board);
             BorderRules.removeBordersIfNeed(board);
+            System.out.println(board);
+            timeStop = Calendar.getInstance().getTimeInMillis();
 
+            Thread.sleep(Math.max(0, constants.getSleepInterval() - (timeStop - timeStart)));
         }
     }
 }

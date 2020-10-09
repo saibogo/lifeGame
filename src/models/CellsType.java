@@ -4,7 +4,7 @@ public enum CellsType {
     LIVE {
         @Override
         public String toString() {
-            return (char)27 + "[31m" + "#" + (char)27 + "[37m" + "|";
+            return Constants.redString + "#" + Constants.whiteString + "|";
         }
     }, DEAD {
         @Override
