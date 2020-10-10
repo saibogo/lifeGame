@@ -3,21 +3,19 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Board {
 
-    private long height;
-    private long width;
     private List<List<CellsType>> boardList;
     private Constants constants;
 
     public Board(long height, long width, Constants constants) {
-        this.height = height;
-        this.width = width;
+
         this.constants = constants;
         boardList = new ArrayList<>();
-        for (long i = 0; i < height; i++) {
+        for (long i = 0; i < Math.max(height, constants.getMinimalHeight()); i++) {
             List<CellsType> tmpList = new ArrayList<>();
-            for (long j = 0; j < width; j++) {
+            for (long j = 0; j < Math.max(width, constants.getMinimalWidth()); j++) {
                 tmpList.add(CellsType.EMPTY);
             }
             boardList.add(tmpList);
@@ -35,11 +33,11 @@ public class Board {
     }
 
     public long getHeight() {
-        return height;
+        return this.boardList.size();
     }
 
     public long getWidth() {
-        return width;
+        return this.boardList.get(0).size();
     }
 
     public CellsType getCell(long row, long col) {
@@ -79,42 +77,37 @@ public class Board {
     }
 
     public void addLeftColumn() {
-        for (long i = 0; i < this.height; i++) {
+        for (long i = 0; i < this.getHeight(); i++) {
             this.boardList.get((int)i).add(0, CellsType.EMPTY);
         }
-        this.width++;
     }
 
     public void addRightColumn() {
-        for (long i = 0; i < this.height; i++) {
+        for (long i = 0; i < this.getHeight(); i++) {
             this.boardList.get((int)i).add(CellsType.EMPTY);
         }
-        this.width++;
     }
 
     public void addTopLine() {
         List<CellsType> tmpList = new ArrayList();
-        for (long j = 0; j < this.width; j++) {
+        for (long j = 0; j < this.getWidth(); j++) {
             tmpList.add(CellsType.EMPTY);
         }
         this.boardList.add(0, tmpList);
-        this.height++;
     }
 
     public void addBottomLine() {
         List<CellsType> tmpList = new ArrayList();
-        for (long j = 0; j < this.width; j++) {
+        for (long j = 0; j < this.getWidth(); j++) {
             tmpList.add(CellsType.EMPTY);
         }
         this.boardList.add(tmpList);
-        this.height++;
     }
 
     public void removeTopLine() {
         try {
-            if (this.height > this.constants.getMinimalHeight()) {
+            if (this.getHeight() > this.constants.getMinimalHeight()) {
                 this.boardList.remove(0);
-                this.height--;
             }
         } catch (IndexOutOfBoundsException ignored) {
 
@@ -123,9 +116,8 @@ public class Board {
 
     public void removeBottomLine() {
         try {
-            if (this.height > this.constants.getMinimalHeight()) {
-                this.boardList.remove((int) this.height - 1);
-                this.height--;
+            if (this.getHeight() > this.constants.getMinimalHeight()) {
+                this.boardList.remove((int) this.getHeight() - 1);
             }
         } catch (IndexOutOfBoundsException ignored) {
 
@@ -134,11 +126,10 @@ public class Board {
 
     public void removeLeftLine() {
         try {
-            if (this.width > this.constants.getMinimalWidth()) {
-                for (int i = 0; i < this.height; i++) {
+            if (this.getWidth() > this.constants.getMinimalWidth()) {
+                for (int i = 0; i < this.getHeight(); i++) {
                     this.boardList.get(i).remove(0);
                 }
-                this.width--;
             }
 
         } catch (IndexOutOfBoundsException ignored) {
@@ -148,11 +139,10 @@ public class Board {
 
     public void removeRightLine() {
         try {
-            if (this.width > this.constants.getMinimalWidth()) {
-                for (int i = 0; i < this.height; i++) {
-                    this.boardList.get(i).remove((int) this.width - 1);
+            if (this.getWidth() > this.constants.getMinimalWidth()) {
+                for (int i = 0; i < this.getHeight(); i++) {
+                    this.boardList.get(i).remove((int) this.getWidth() - 1);
                 }
-                this.width--;
             }
         } catch (IndexOutOfBoundsException ignored) {
 

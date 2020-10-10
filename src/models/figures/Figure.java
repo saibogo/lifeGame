@@ -8,17 +8,13 @@ import java.util.List;
 
 public class Figure {
 
-    private long height;
-    private long width;
     private List<List<CellsType>> figureArray;
 
     public Figure(long height, long width) {
-        this.height = height;
-        this.width = width;
         this.figureArray = new ArrayList<>();
-        for (long i = 0; i < this.height; i++) {
+        for (long i = 0; i < height; i++) {
             List<CellsType> tmpList = new ArrayList<>();
-            for (long j = 0; j < this.width; j++) {
+            for (long j = 0; j < width; j++) {
                 tmpList.add(CellsType.EMPTY);
             }
             this.figureArray.add(tmpList);
@@ -34,11 +30,11 @@ public class Figure {
     }
 
     public long getHeight() {
-        return height;
+        return figureArray.size();
     }
 
     public long getWidth() {
-        return width;
+        return figureArray.get(0).size();
     }
 
     public List<List<CellsType>> getFigureArray() {

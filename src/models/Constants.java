@@ -5,9 +5,9 @@ public class Constants {
     public static String redString = (char)27 + "[31m";
     public static String whiteString = (char)27 + "[37m";
 
-    private long minimalHeight;
-    private long minimalWidth;
-    private long sleepInterval;
+    private final long minimalHeight;
+    private final long minimalWidth;
+    private final long sleepInterval;
 
 
     private Constants(Constants.Builder builder) {
