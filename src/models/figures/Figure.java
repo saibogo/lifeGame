@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Figure {
 
-    private List<List<CellsType>> figureArray;
+    private final List<List<CellsType>> figureArray;
 
     public Figure(long height, long width) {
         this.figureArray = new ArrayList<>();
@@ -45,9 +45,9 @@ public class Figure {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append(Constants.whiteString);
-        for (long i = 0; i < this.figureArray.size(); i++) {
-            for (long j = 0; j < this.figureArray.get(0).size(); j++) {
-                builder.append(this.figureArray.get((int)i).get((int)j));
+        for(List<CellsType> lst: this.figureArray) {
+            for(CellsType cell: lst) {
+                builder.append(cell);
             }
             builder.append("\n");
         }

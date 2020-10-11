@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Board {
 
-    private List<List<CellsType>> boardList;
-    private Constants constants;
+    private final List<List<CellsType>> boardList;
+    private final Constants constants;
 
     public Board(long height, long width, Constants constants) {
 
@@ -70,26 +70,26 @@ public class Board {
         tmpList.add(this.getCell(row + 1, col - 1));
 
         long count = 0;
-        for (int i = 0; i < tmpList.size(); i++) {
-            count = (tmpList.get(i).equals(CellsType.LIVE) || tmpList.get(i).equals(CellsType.DEAD)) ? count + 1 : count;
+        for(CellsType cell: tmpList) {
+            count = (cell.equals(CellsType.LIVE) || cell.equals(CellsType.DEAD)) ? count + 1 : count;
         }
         return count;
     }
 
     public void addLeftColumn() {
-        for (long i = 0; i < this.getHeight(); i++) {
-            this.boardList.get((int)i).add(0, CellsType.EMPTY);
+        for (List<CellsType> lst: this.boardList) {
+            lst.add(0, CellsType.EMPTY);
         }
     }
 
     public void addRightColumn() {
-        for (long i = 0; i < this.getHeight(); i++) {
-            this.boardList.get((int)i).add(CellsType.EMPTY);
+        for (List<CellsType> lst: this.boardList) {
+            lst.add(CellsType.EMPTY);
         }
     }
 
     public void addTopLine() {
-        List<CellsType> tmpList = new ArrayList();
+        List<CellsType> tmpList = new ArrayList<>();
         for (long j = 0; j < this.getWidth(); j++) {
             tmpList.add(CellsType.EMPTY);
         }
@@ -97,7 +97,7 @@ public class Board {
     }
 
     public void addBottomLine() {
-        List<CellsType> tmpList = new ArrayList();
+        List<CellsType> tmpList = new ArrayList<>();
         for (long j = 0; j < this.getWidth(); j++) {
             tmpList.add(CellsType.EMPTY);
         }
@@ -127,8 +127,8 @@ public class Board {
     public void removeLeftLine() {
         try {
             if (this.getWidth() > this.constants.getMinimalWidth()) {
-                for (int i = 0; i < this.getHeight(); i++) {
-                    this.boardList.get(i).remove(0);
+                for(List<CellsType> lst: this.boardList) {
+                    lst.remove(0);
                 }
             }
 
@@ -140,8 +140,8 @@ public class Board {
     public void removeRightLine() {
         try {
             if (this.getWidth() > this.constants.getMinimalWidth()) {
-                for (int i = 0; i < this.getHeight(); i++) {
-                    this.boardList.get(i).remove((int) this.getWidth() - 1);
+                for(List<CellsType> lst: this.boardList) {
+                    lst.remove((int) this.getWidth() - 1);
                 }
             }
         } catch (IndexOutOfBoundsException ignored) {
@@ -153,9 +153,9 @@ public class Board {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append(Constants.whiteString);
-        for (long i = 0; i < this.boardList.size(); i++) {
-            for (long j = 0; j < this.boardList.get(0).size(); j++) {
-                builder.append(this.boardList.get((int)i).get((int)j));
+        for (List<CellsType> lst: this.boardList) {
+            for (CellsType cell: lst) {
+                builder.append(cell);
             }
             builder.append("\n");
         }
