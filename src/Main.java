@@ -20,11 +20,11 @@ public class Main {
 
         long timeStart, timeStop;
 
-        Board board = new Board(4, 6, constants);
-        Figure hive = new HorizontalHive();
-        Figure semaphore = new VerticalSemaphore();
-        InsertFigureToBoardController.insert(board, hive, 1, 1);
-        InsertFigureToBoardController.insert(board, semaphore, 0, 5);
+        Board board = new Board(4, 10, constants);
+        Figure glider2 = new LeftGlider();
+        Figure glider1 = new RightGlider();
+        InsertFigureToBoardController.insert(board, glider1, 0, 1);
+        InsertFigureToBoardController.insert(board, glider2, 0, 6);
 
         System.out.println(board);
 

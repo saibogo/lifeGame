@@ -8,13 +8,13 @@ import java.util.List;
 
 public class Figure {
 
-    private final List<List<CellsType>> figureArray;
+    protected final List<List<CellsType>> figureArray;
 
     public Figure(long height, long width) {
         this.figureArray = new ArrayList<>();
-        for (long i = 0; i < height; i++) {
+        for (long i = 0; i < Math.max(height, 1); i++) {
             List<CellsType> tmpList = new ArrayList<>();
-            for (long j = 0; j < width; j++) {
+            for (long j = 0; j < Math.max(width, 1); j++) {
                 tmpList.add(CellsType.EMPTY);
             }
             this.figureArray.add(tmpList);
