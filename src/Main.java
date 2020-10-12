@@ -1,11 +1,11 @@
-import java.util.Calendar;
-
 import controllers.BorderRules;
 import controllers.InsertFigureToBoardController;
 import controllers.Rules;
 import models.Board;
 import models.Constants;
 import models.figures.*;
+import models.gui.GameCanvas;
+import models.gui.MainFrame;
 
 
 public class Main {
@@ -16,27 +16,24 @@ public class Main {
                 .setMinimalHeight(3)
                 .setMinimalWidth(3)
                 .setSleepInterval(700)
+                .setSizeCell(20)
                 .build();
 
-        long timeStart, timeStop;
+        Board board = new Board(8, 10, constants);
+        Figure semaphore = new VerticalSemaphore();
+        InsertFigureToBoardController.insert(board, semaphore, 1, 4);
+        Figure hive = new VerticalHive();
+        InsertFigureToBoardController.insert(board, hive, 0, 0);
+        MainFrame frame = new MainFrame(new GameCanvas(board));
 
-        Board board = new Board(4, 10, constants);
-        Figure glider2 = new LeftGlider();
-        Figure glider1 = new RightGlider();
-        InsertFigureToBoardController.insert(board, glider1, 0, 1);
-        InsertFigureToBoardController.insert(board, glider2, 0, 6);
-
-        System.out.println(board);
-
-        for (long iteration = 0; iteration < 400; iteration++) {
-            timeStart = Calendar.getInstance().getTimeInMillis();
+        for (int iteration = 0; iteration < 200; iteration++) {
+            Thread.sleep(constants.getSleepInterval());
             Rules.iteration(board);
             BorderRules.addBorderIfNeed(board);
             BorderRules.removeBordersIfNeed(board);
-            System.out.println(board);
-            timeStop = Calendar.getInstance().getTimeInMillis();
-
-            Thread.sleep(Math.max(0, constants.getSleepInterval() - (timeStop - timeStart)));
+            frame.repaintBoard();
+            frame.setTitle("Поколение №" + iteration);
         }
+
     }
 }

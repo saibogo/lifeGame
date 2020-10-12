@@ -32,6 +32,10 @@ public class Board {
                 build());
     }
 
+    public Constants getConstants() {
+        return constants;
+    }
+
     public long getHeight() {
         return this.boardList.size();
     }
