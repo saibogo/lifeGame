@@ -1,6 +1,5 @@
-import controllers.BorderRules;
+import controllers.BoardController;
 import controllers.InsertFigureToBoardController;
-import controllers.Rules;
 import models.Board;
 import models.Constants;
 import models.figures.*;
@@ -25,12 +24,11 @@ public class Main {
         Figure hive = new VerticalHive();
         InsertFigureToBoardController.insert(board, hive, 0, 0);
         MainFrame frame = new MainFrame(new GameCanvas(board));
+        BoardController controller = new BoardController(board);
 
         for (int iteration = 0; iteration < 200; iteration++) {
             Thread.sleep(constants.getSleepInterval());
-            Rules.iteration(board);
-            BorderRules.addBorderIfNeed(board);
-            BorderRules.removeBordersIfNeed(board);
+            controller.iteration();
             frame.repaintBoard();
             frame.setTitle("Поколение №" + iteration);
         }
