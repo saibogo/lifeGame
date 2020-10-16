@@ -5,7 +5,7 @@ public class VerticalHive extends Figure {
     private static VerticalHive instance;
 
     public VerticalHive() {
-        super(4, 3);
+        super("Vertical Hive", 4, 3);
         this.setCellLive(0, 1);
         this.setCellLive(1, 0);
         this.setCellLive(1, 2);

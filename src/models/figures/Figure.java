@@ -9,8 +9,10 @@ import java.util.List;
 public class Figure {
 
     protected final List<List<CellsType>> figureArray;
+    protected final String figureName;
 
-    protected Figure(long height, long width) {
+    protected Figure(String figureName, long height, long width) {
+        this.figureName = figureName;
         this.figureArray = new ArrayList<>();
         for (long i = 0; i < Math.max(height, 1); i++) {
             List<CellsType> tmpList = new ArrayList<>();
@@ -21,6 +23,10 @@ public class Figure {
         }
     }
 
+
+    public String getFigureName() {
+        return figureName;
+    }
 
     public void setCellLive(long row, long column) {
         try {

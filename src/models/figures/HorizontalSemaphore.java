@@ -5,7 +5,7 @@ public class HorizontalSemaphore extends Figure {
     private static HorizontalSemaphore instance;
 
     private HorizontalSemaphore() {
-        super(1, 3);
+        super("Horizontal Semaphore", 1, 3);
         this.setCellLive(0, 0);
         this.setCellLive(0, 1);
         this.setCellLive(0, 2);
