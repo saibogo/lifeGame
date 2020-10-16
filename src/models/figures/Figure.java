@@ -10,7 +10,7 @@ public class Figure {
 
     protected final List<List<CellsType>> figureArray;
 
-    public Figure(long height, long width) {
+    protected Figure(long height, long width) {
         this.figureArray = new ArrayList<>();
         for (long i = 0; i < Math.max(height, 1); i++) {
             List<CellsType> tmpList = new ArrayList<>();
@@ -20,6 +20,7 @@ public class Figure {
             this.figureArray.add(tmpList);
         }
     }
+
 
     public void setCellLive(long row, long column) {
         try {

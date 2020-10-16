@@ -1,5 +1,4 @@
 import controllers.BoardController;
-import controllers.InsertFigureToBoardController;
 import models.Board;
 import models.Constants;
 import models.figures.*;
@@ -19,12 +18,12 @@ public class Main {
                 .build();
 
         Board board = new Board(8, 10, constants);
-        Figure semaphore = new VerticalSemaphore();
-        InsertFigureToBoardController.insert(board, semaphore, 1, 4);
-        Figure hive = new VerticalHive();
-        InsertFigureToBoardController.insert(board, hive, 0, 0);
+        Figure hive = HorizontalHive.getInstance();
+        Figure semaphore = HorizontalSemaphore.getInstance();
         MainFrame frame = new MainFrame(new GameCanvas(board));
         BoardController controller = new BoardController(board);
+        controller.insert(hive, 0, 0);
+        controller.insert(semaphore, 1, 4);
 
         for (int iteration = 0; iteration < 200; iteration++) {
             Thread.sleep(constants.getSleepInterval());

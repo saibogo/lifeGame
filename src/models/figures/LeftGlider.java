@@ -1,7 +1,10 @@
 package models.figures;
 
 public class LeftGlider extends Figure {
-    public LeftGlider() {
+
+    private static LeftGlider instance;
+
+    private LeftGlider() {
         super(3, 3);
         this.setCellLive(0, 1);
         this.setCellLive(1, 0);
@@ -9,5 +12,12 @@ public class LeftGlider extends Figure {
         this.setCellLive(2, 1);
         this.setCellLive(2, 2);
 
+    }
+
+    public static Figure getInstance() {
+        if (LeftGlider.instance == null) {
+            LeftGlider.instance = new LeftGlider();
+        }
+        return LeftGlider.instance;
     }
 }
