@@ -1,4 +1,4 @@
-package models.gui;
+package views.gui;
 
 import models.Board;
 import models.CellsType;

@@ -2,8 +2,11 @@ import controllers.BoardController;
 import models.Board;
 import models.Constants;
 import models.figures.*;
-import models.gui.GameCanvas;
-import models.gui.MainFrame;
+import views.gui.GameCanvas;
+import views.gui.InputSizeFrame;
+import views.gui.MainFrame;
+
+import java.awt.*;
 
 
 public class Main {
@@ -17,7 +20,14 @@ public class Main {
                 .setSizeCell(20)
                 .build();
 
-        Board board = new Board(8, 10, constants);
+        Dimension boardDimension = new Dimension((int)constants.getMinimalWidth(), (int)constants.getMinimalHeight());
+
+        InputSizeFrame sizeFrame = new InputSizeFrame(boardDimension);
+        while (sizeFrame.isFrameIsRunning()) {
+            Thread.sleep(50);
+        }
+
+        Board board = new Board(boardDimension.height, boardDimension.width, constants);
         Figure hive = HorizontalHive.getInstance();
         Figure semaphore = HorizontalSemaphore.getInstance();
         MainFrame frame = new MainFrame(new GameCanvas(board));
