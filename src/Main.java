@@ -27,7 +27,7 @@ public class Main {
             Thread.sleep(50);
         }
 
-        Board board = new Board(boardDimension.height, boardDimension.width, constants);
+        Board board = new Board(boardDimension, constants);
         Figure hive = HorizontalHive.getInstance();
         Figure semaphore = HorizontalSemaphore.getInstance();
         MainFrame frame = new MainFrame(new GameCanvas(board));

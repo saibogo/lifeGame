@@ -1,5 +1,6 @@
 package models;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,19 @@ public class Board {
             }
             boardList.add(tmpList);
         }
+    }
+
+    public Board(Dimension dimension, Constants constants) {
+        this(dimension.height, dimension.width, constants);
+    }
+
+    public Board(Dimension dimension) {
+        this(dimension,
+                (new Constants.Builder()).
+                        setSleepInterval(700).
+                        setMinimalWidth(3).
+                        setMinimalHeight(3).
+                        build());
     }
 
     public Board() {
