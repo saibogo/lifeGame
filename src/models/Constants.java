@@ -5,10 +5,10 @@ public class Constants {
     public static String redString = (char)27 + "[31m";
     public static String whiteString = (char)27 + "[37m";
 
-    private final long minimalHeight;
-    private final long minimalWidth;
-    private final long sleepInterval;
-    private final int sizeCell;
+    private long minimalHeight;
+    private long minimalWidth;
+    private long sleepInterval;
+    private int sizeCell;
 
 
     private Constants(Constants.Builder builder) {
@@ -33,6 +33,22 @@ public class Constants {
 
     public long getSleepInterval() {
         return sleepInterval;
+    }
+
+    public void setMinimalHeight(long minimalHeight) {
+        this.minimalHeight = minimalHeight;
+    }
+
+    public void setMinimalWidth(long minimalWidth) {
+        this.minimalWidth = minimalWidth;
+    }
+
+    public void setSleepInterval(long sleepInterval) {
+        this.sleepInterval = sleepInterval;
+    }
+
+    public void setSizeCell(int sizeCell) {
+        this.sizeCell = sizeCell;
     }
 
     public static class Builder {

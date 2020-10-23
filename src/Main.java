@@ -1,7 +1,7 @@
 import controllers.BoardController;
 import models.Board;
 import models.Constants;
-import models.figures.*;
+import views.gui.BoardCreatorFrame;
 import views.gui.GameCanvas;
 import views.gui.InputSizeFrame;
 import views.gui.MainFrame;
@@ -22,24 +22,25 @@ public class Main {
 
         Dimension boardDimension = new Dimension((int)constants.getMinimalWidth(), (int)constants.getMinimalHeight());
 
-        InputSizeFrame sizeFrame = new InputSizeFrame(boardDimension);
+        InputSizeFrame sizeFrame = new InputSizeFrame(boardDimension, constants);
         while (sizeFrame.isFrameIsRunning()) {
             Thread.sleep(50);
         }
 
         Board board = new Board(boardDimension, constants);
-        Figure hive = HorizontalHive.getInstance();
-        Figure semaphore = HorizontalSemaphore.getInstance();
-        MainFrame frame = new MainFrame(new GameCanvas(board));
-        BoardController controller = new BoardController(board);
-        controller.insert(hive, 0, 0);
-        controller.insert(semaphore, 1, 4);
+        BoardCreatorFrame boardCreatorFrame = new BoardCreatorFrame(board);
+        boardCreatorFrame.dispose();
 
-        for (int iteration = 0; iteration < 200; iteration++) {
+        BoardController boardController = new BoardController(board);
+        MainFrame mainFrame = new MainFrame(new GameCanvas(board));
+        long generation = 0;
+        while (true) {
+            mainFrame.setTitle("Generation " + generation);
+            mainFrame.repaintBoard();
             Thread.sleep(constants.getSleepInterval());
-            controller.iteration();
-            frame.repaintBoard();
-            frame.setTitle("Поколение №" + iteration);
+            boardController.iteration();
+            generation++;
+
         }
 
     }

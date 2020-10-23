@@ -1,78 +1,112 @@
 package views.gui;
 
 import any.DigitFilter;
+import models.Constants;
 
 import javax.swing.*;
 import javax.swing.text.PlainDocument;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class InputSizeFrame extends JFrame {
 
-    private Dimension dimension;
     private boolean frameIsRunning;
 
-    public InputSizeFrame(Dimension dimension) throws HeadlessException {
+    public InputSizeFrame(Dimension dimension, Constants constants) throws HeadlessException {
         super("Размеры игрового поля");
 
         this.frameIsRunning = true;
 
-        this.dimension = dimension;
+        DigitFilter digitFilter = new DigitFilter();
+
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setLayout(new GridLayout(4, 1));
-
-        JPanel labelPanel = new JPanel();
+        this.setLayout(new GridLayout(8, 2));
 
         JLabel label = new JLabel("Задайте размеры поля");
-        labelPanel.add(label);
+        this.add(label);
         label.setVisible(true);
 
-        this.add(labelPanel);
-        labelPanel.setVisible(true);
+        this.add(new JLabel());
 
-        JPanel panelHeight = new JPanel();
         JLabel labelHeight = new JLabel("Клеток в высоту: ");
-        panelHeight.add(labelHeight);
+        this.add(labelHeight);
         labelHeight.setVisible(true);
+
 
         JTextField fieldHeight = new JTextField(10);
         PlainDocument doc = (PlainDocument) fieldHeight.getDocument();
         fieldHeight.setText("" + dimension.height);
-        doc.setDocumentFilter(new DigitFilter());
-        panelHeight.add(fieldHeight);
+        doc.setDocumentFilter(digitFilter);
+        this.add(fieldHeight);
         fieldHeight.setVisible(true);
 
+        JLabel minimalHeightLabel = new JLabel("Минимальная высота поля:");
+        this.add(minimalHeightLabel);
+        minimalHeightLabel.setVisible(true);
 
-        this.add(panelHeight);
-        panelHeight.setVisible(true);
+        JTextField minimalHeightField = new JTextField(10);
+        PlainDocument doc2 = (PlainDocument) minimalHeightField.getDocument();
+        minimalHeightField.setText("" + constants.getMinimalHeight());
+        doc2.setDocumentFilter(digitFilter);
+        this.add(minimalHeightField);
+        minimalHeightField.setVisible(true);
 
-        JPanel panelWidth = new JPanel();
+
         JLabel labelWidth = new JLabel("Клеток в ширину: ");
-        panelWidth.add(labelWidth);
+        this.add(labelWidth);
         labelWidth.setVisible(true);
 
         JTextField fieldWidth = new JTextField(10);
         PlainDocument doc1 = (PlainDocument) fieldWidth.getDocument();
-        doc1.setDocumentFilter(new DigitFilter());
+        doc1.setDocumentFilter(digitFilter);
         fieldWidth.setText("" + dimension.width);
-        panelWidth.add(fieldWidth);
+        this.add(fieldWidth);
         fieldWidth.setVisible(true);
 
-        this.add(panelWidth);
-        panelWidth.setVisible(true);
+        JLabel minimalWidthLabel = new JLabel("Минимальная ширина игрового поля");
+        this.add(minimalWidthLabel);
+        minimalWidthLabel.setVisible(true);
+
+        JTextField minimalWidthField = new JTextField(10);
+        PlainDocument doc3 = (PlainDocument) minimalWidthField.getDocument();
+        doc3.setDocumentFilter(digitFilter);
+        minimalWidthField.setText("" + constants.getMinimalWidth());
+        this.add(minimalWidthField);
+        minimalWidthField.setVisible(true);
+
+        JLabel sizeCellLabel = new JLabel("Размер ячейки в пикселях");
+        this.add(sizeCellLabel);
+        sizeCellLabel.setVisible(true);
+
+        JTextField sizeCellField = new JTextField(10);
+        PlainDocument doc4 = (PlainDocument) sizeCellField.getDocument();
+        doc4.setDocumentFilter(digitFilter);
+        sizeCellField.setText("" + constants.getSizeCell());
+        this.add(sizeCellField);
+        sizeCellField.setVisible(true);
+
+        JLabel timeSleepLabel = new JLabel("Пауза между поколениями, мс");
+        this.add(timeSleepLabel);
+        timeSleepLabel.setVisible(true);
+
+        JTextField timeSleepField = new JTextField(10);
+        PlainDocument doc5 = (PlainDocument) timeSleepField.getDocument();
+        doc5.setDocumentFilter(digitFilter);
+        timeSleepField.setText("" + constants.getSleepInterval());
+        this.add(timeSleepField);
+        timeSleepField.setVisible(true);
 
 
         JButton createDimensionButton = new JButton("Применить");
-        createDimensionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dimension.height = Integer.parseInt(fieldHeight.getText());
-                dimension.width = Integer.parseInt(fieldWidth.getText());
-                frameIsRunning = false;
-                dispose();
-            }
+        createDimensionButton.addActionListener(e -> {
+            constants.setMinimalHeight(Long.parseLong(minimalHeightField.getText()));
+            constants.setMinimalWidth(Long.parseLong(minimalWidthField.getText()));
+            constants.setSizeCell(Integer.parseInt(sizeCellField.getText()));
+            constants.setSleepInterval(Long.parseLong(timeSleepField.getText()));
+            dimension.height = Math.max(Integer.parseInt(fieldHeight.getText()), (int)constants.getMinimalHeight());
+            dimension.width = Math.max(Integer.parseInt(fieldWidth.getText()), (int)constants.getMinimalWidth());
+            frameIsRunning = false;
+            dispose();
         });
 
         this.add(createDimensionButton);
