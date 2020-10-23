@@ -6,6 +6,8 @@ import models.Board;
 import javax.swing.*;
 import java.awt.*;
 
+import static java.lang.System.exit;
+
 public class BoardCreatorFrame extends JFrame {
 
     private CreateCanvasGui createCanvasGui;
@@ -49,6 +51,29 @@ public class BoardCreatorFrame extends JFrame {
 
         });
 
+        JMenuItem exitItem = new JMenuItem("Exit");
+        actionMenu.add(exitItem);
+        exitItem.setVisible(true);
+
+        exitItem.addActionListener(actionEvent -> exit(0));
+
+        JMenu helpMenu = new JMenu("Help");
+        menuBar.add(helpMenu);
+        helpMenu.setVisible(true);
+
+        JMenuItem rulesItem = new JMenuItem("Rules");
+        helpMenu.add(rulesItem);
+        rulesItem.setVisible(true);
+
+        rulesItem.addActionListener(actionEvent -> showRules()
+        );
+
+        JMenuItem interfaceItem = new JMenuItem("Interface");
+        helpMenu.add(interfaceItem);
+        interfaceItem.setVisible(true);
+        interfaceItem.addActionListener(e -> {
+            showInterfaceOption();
+        });
 
         this.setJMenuBar(menuBar);
         menuBar.setVisible(true);
@@ -82,9 +107,26 @@ public class BoardCreatorFrame extends JFrame {
         return gameDone;
     }
 
+    public void setGameDone(boolean gameDone) {
+        this.gameDone = gameDone;
+    }
+
     @Override
     public void dispose() {
-        super.dispose();
         setVisible(false);
+        super.dispose();
+    }
+
+    private void showRules(){
+        JOptionPane.showMessageDialog(this, "Новая клетка рождается," +
+                " если у нее ровно три соседа.\nЕсли у клетки меньше двух соседей, или больше трех  - клетка умирает");
+    }
+
+    private void showInterfaceOption() {
+        JOptionPane.showMessageDialog(this, "Создать/удалить клетку - левая кнопка мышки\n" +
+                "Select - выбрать фигуру из каталога для вставки\n" +
+                "Вставить готовую фигуру - правая кнопка мышки\n" +
+                "Action -> Run  - запустить эволюцию колонии клеток" +
+                "SPACE - прервать эволюцию колонии");
     }
 }
