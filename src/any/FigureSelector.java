@@ -18,6 +18,8 @@ public class FigureSelector {
         this.allFiguresList.add(Square2_2.getInstance());
         this.allFiguresList.add(VerticalHive.getInstance());
         this.allFiguresList.add(VerticalSemaphore.getInstance());
+        this.allFiguresList.add(Pulsar.getInstance());
+        this.allFiguresList.add(Crossroads.getInstance());
 
         this.numberSelectedFigure = 0;
     }
