@@ -5,7 +5,7 @@ public class RightGlider extends Figure {
     private static RightGlider instance;
 
     public RightGlider() {
-        super("Glider to Right", 3, 3);
+        super("Правонаправленный Глайдер", 3, 3);
         this.setCellLive(0, 1);
         this.setCellLive(1, 2);
         this.setCellLive(2, 0);

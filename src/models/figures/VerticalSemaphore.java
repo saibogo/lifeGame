@@ -5,7 +5,7 @@ public class VerticalSemaphore extends Figure {
     private static VerticalSemaphore instance;
 
     public VerticalSemaphore() {
-        super("Vertical Semaphore", 3, 1);
+        super("Вертикальный Семафор", 3, 1);
         this.setCellLive(0, 0);
         this.setCellLive(1, 0);
         this.setCellLive(2, 0);

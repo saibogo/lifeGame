@@ -16,6 +16,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
 
+
         Constants constants = (new Constants.Builder())
                 .setMinimalHeight(10)
                 .setMinimalWidth(10)

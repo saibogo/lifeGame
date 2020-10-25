@@ -29,7 +29,6 @@ public class MainFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent keyEvent) {
                 if (keyEvent.getKeyChar() == ' ') {
-                    System.out.println("SPACE pressed");
                     spacePressed = true;
                 }
             }

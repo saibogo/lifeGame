@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FigureSelector {
-    private List<Figure> allFiguresList;
+    private final List<Figure> allFiguresList;
     private int numberSelectedFigure;
 
     public FigureSelector() {
