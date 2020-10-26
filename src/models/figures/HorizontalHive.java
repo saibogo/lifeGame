@@ -1,11 +1,14 @@
 package models.figures;
 
+import models.figures.support.FigureGroups;
+import models.figures.support.FigureTypes;
+
 public class HorizontalHive  extends Figure{
 
     private static HorizontalHive instance;
 
     private HorizontalHive() {
-        super("Горизонтальный Улей",3 ,4);
+        super("Горизонтальный Улей",3 ,4, FigureTypes.STABLE, FigureGroups.HIVES);
         this.setCellLive(0, 1);
         this.setCellLive(0, 2);
         this.setCellLive(1, 0);

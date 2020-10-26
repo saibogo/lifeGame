@@ -48,4 +48,8 @@ public class FigureSelector {
         this.numberSelectedFigure = numberSelectedFigure;
     }
 
+    public Figure getFigureNumber(int num) {
+        return this.allFiguresList.get(num);
+    }
+
 }

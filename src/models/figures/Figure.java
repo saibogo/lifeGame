@@ -2,6 +2,8 @@ package models.figures;
 
 import models.CellsType;
 import models.Constants;
+import models.figures.support.FigureGroups;
+import models.figures.support.FigureTypes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +12,13 @@ public class Figure {
 
     protected final List<List<CellsType>> figureArray;
     protected final String figureName;
+    protected final FigureTypes figureTypes;
+    protected final FigureGroups figureGroups;
 
-    protected Figure(String figureName, long height, long width) {
+    protected Figure(String figureName, long height, long width, FigureTypes figureTypes, FigureGroups figureGroups) {
         this.figureName = figureName;
+        this.figureTypes = figureTypes;
+        this.figureGroups = figureGroups;
         this.figureArray = new ArrayList<>();
         for (long i = 0; i < Math.max(height, 1); i++) {
             List<CellsType> tmpList = new ArrayList<>();
@@ -46,6 +52,14 @@ public class Figure {
 
     public List<List<CellsType>> getFigureArray() {
         return figureArray;
+    }
+
+    public FigureTypes getFigureTypes() {
+        return this.figureTypes;
+    }
+
+    public FigureGroups getFigureGroups() {
+        return this.figureGroups;
     }
 
     @Override

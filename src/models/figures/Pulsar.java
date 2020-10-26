@@ -1,5 +1,8 @@
 package models.figures;
 
+import models.figures.support.FigureGroups;
+import models.figures.support.FigureTypes;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +10,7 @@ public class Pulsar extends Figure {
     private static Pulsar instance;
 
     private Pulsar() {
-        super("Пульсар",13 ,13);
+        super("Пульсар",13 ,13, FigureTypes.PULSE, FigureGroups.NONE);
         List<Integer> rowsNum = new ArrayList();
         rowsNum.add(2);
         rowsNum.add(3);

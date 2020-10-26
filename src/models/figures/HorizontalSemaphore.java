@@ -1,11 +1,14 @@
 package models.figures;
 
+import models.figures.support.FigureGroups;
+import models.figures.support.FigureTypes;
+
 public class HorizontalSemaphore extends Figure {
 
     private static HorizontalSemaphore instance;
 
     private HorizontalSemaphore() {
-        super("Горизонтальный Семафор", 1, 3);
+        super("Горизонтальный Семафор", 1, 3, FigureTypes.PULSE, FigureGroups.SEMAPHORE);
         this.setCellLive(0, 0);
         this.setCellLive(0, 1);
         this.setCellLive(0, 2);

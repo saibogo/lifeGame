@@ -2,6 +2,8 @@ package views.gui;
 
 import any.FigureSelector;
 import models.Board;
+import models.figures.Figure;
+import models.figures.support.FigureTypes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,18 +25,11 @@ public class BoardCreatorFrame extends JFrame {
 
         JMenuBar menuBar = new JMenuBar();
 
-        JMenu selectMenu = new JMenu("Select");
+        SelectFiguresMenu selectMenu = new SelectFiguresMenu(figureSelector);
         menuBar.add(selectMenu);
         selectMenu.setVisible(true);
 
 
-        for (int i = 0; i < figureSelector.getFiguresCount(); i++) {
-            JMenuItem figureItem = new JMenuItem(figureSelector.getAllFiguresNames().get(i));
-            int finalI = i;
-            figureItem.addActionListener(actionEvent -> figureSelector.setNumberSelectedFigure(finalI));
-            selectMenu.add(figureItem);
-            figureItem.setVisible(true);
-        }
 
         JMenu actionMenu = new JMenu("Action");
         menuBar.add(actionMenu);
