@@ -20,6 +20,7 @@ public class FigureSelector {
         this.allFiguresList.add(VerticalSemaphore.getInstance());
         this.allFiguresList.add(Pulsar.getInstance());
         this.allFiguresList.add(Crossroads.getInstance());
+        this.allFiguresList.add(Turnstile.getInstance());
 
         this.numberSelectedFigure = 0;
     }
