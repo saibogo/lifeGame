@@ -1,13 +1,14 @@
-package models.figures;
+package models.figures.semaphores;
 
+import models.figures.Figure;
 import models.figures.support.FigureGroups;
 import models.figures.support.FigureTypes;
 
-public class Crossroads extends Figure{
+public final class Crossroads extends Figure {
     private static Crossroads instance;
 
     private Crossroads() {
-        super("Перекресток",9 ,9, FigureTypes.PULSE, FigureGroups.NONE);
+        super("Перекресток",9 ,9, FigureTypes.PULSE, FigureGroups.SEMAPHORE);
         for (int i = 0; i < 3; i++) {
             this.setCellLive(i, 4);
             this.setCellLive(4, i);

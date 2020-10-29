@@ -1,9 +1,10 @@
-package models.figures;
+package models.figures.gliders;
 
+import models.figures.Figure;
 import models.figures.support.FigureGroups;
 import models.figures.support.FigureTypes;
 
-public class LeftGlider extends Figure {
+public final class LeftGlider extends Figure {
 
     private static LeftGlider instance;
 

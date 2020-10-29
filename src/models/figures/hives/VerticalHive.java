@@ -1,9 +1,10 @@
-package models.figures;
+package models.figures.hives;
 
+import models.figures.Figure;
 import models.figures.support.FigureGroups;
 import models.figures.support.FigureTypes;
 
-public class VerticalHive extends Figure {
+public final class VerticalHive extends Figure {
 
     private static VerticalHive instance;
 

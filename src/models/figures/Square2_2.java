@@ -3,7 +3,7 @@ package models.figures;
 import models.figures.support.FigureGroups;
 import models.figures.support.FigureTypes;
 
-public class Square2_2 extends Figure {
+public final class Square2_2 extends Figure {
 
     private static Square2_2 instance;
 

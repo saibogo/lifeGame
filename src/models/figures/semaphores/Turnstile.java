@@ -1,9 +1,10 @@
-package models.figures;
+package models.figures.semaphores;
 
+import models.figures.Figure;
 import models.figures.support.FigureGroups;
 import models.figures.support.FigureTypes;
 
-public class Turnstile extends Figure {
+public final class Turnstile extends Figure {
     private static Turnstile instance;
 
     private Turnstile() {

@@ -1,6 +1,17 @@
 package any;
 
 import models.figures.*;
+import models.figures.gliders.LeftGlider;
+import models.figures.gliders.RightGlider;
+import models.figures.gliders.UpGlider;
+import models.figures.hives.HorizontalHive;
+import models.figures.hives.LeftDiagonalHive;
+import models.figures.hives.RightDiagonalHive;
+import models.figures.hives.VerticalHive;
+import models.figures.semaphores.Crossroads;
+import models.figures.semaphores.HorizontalSemaphore;
+import models.figures.semaphores.Turnstile;
+import models.figures.semaphores.VerticalSemaphore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +32,10 @@ public class FigureSelector {
         this.allFiguresList.add(Pulsar.getInstance());
         this.allFiguresList.add(Crossroads.getInstance());
         this.allFiguresList.add(Turnstile.getInstance());
+        this.allFiguresList.add(Circle.getInstance());
+        this.allFiguresList.add(RightDiagonalHive.getInstance());
+        this.allFiguresList.add(LeftDiagonalHive.getInstance());
+        this.allFiguresList.add(UpGlider.getInstance());
 
         this.numberSelectedFigure = 0;
     }

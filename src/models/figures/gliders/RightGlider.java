@@ -1,13 +1,14 @@
-package models.figures;
+package models.figures.gliders;
 
+import models.figures.Figure;
 import models.figures.support.FigureGroups;
 import models.figures.support.FigureTypes;
 
-public class RightGlider extends Figure {
+public final class RightGlider extends Figure {
 
     private static RightGlider instance;
 
-    public RightGlider() {
+    private RightGlider() {
         super("Правонаправленный Глайдер", 3, 3, FigureTypes.RUN, FigureGroups.GLIDERS);
         this.setCellLive(0, 1);
         this.setCellLive(1, 2);

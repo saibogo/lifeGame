@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Board {
+public final class Board {
 
     private final List<List<CellsType>> boardList;
     private final Constants constants;
@@ -165,6 +165,37 @@ public class Board {
         } catch (IndexOutOfBoundsException ignored) {
 
         }
+    }
+
+    public void rotateToLeft() {
+        List<List<CellsType>> tmpBoardList = new ArrayList<>();
+        long newHeight = this.getWidth();
+        long newWidth = this.getHeight();
+        for (long i = 0; i < newHeight; i++) {
+            tmpBoardList.add(new ArrayList<>());
+            for (long j = 0; j < newWidth; j++) {
+                tmpBoardList.get((int)i).add(CellsType.EMPTY);
+            }
+        }
+
+        for (long i = 0; i < newHeight; i++) {
+            for (long j = 0; j < newWidth; j++) {
+                tmpBoardList.get((int)i).set((int)j, this.boardList.get((int)j).get((int)(newHeight - i - 1)));
+            }
+        }
+
+        this.boardList.clear();
+        this.boardList.addAll(tmpBoardList);
+        long newMinimalHeight = this.constants.getMinimalWidth();
+        this.constants.setMinimalWidth(this.constants.getMinimalHeight());
+        this.constants.setMinimalHeight(newMinimalHeight);
+
+    }
+
+    public void rotateToRight() {
+       for (int i = 0; i < 3; i++) {
+           this.rotateToLeft();
+       }
     }
 
     @Override

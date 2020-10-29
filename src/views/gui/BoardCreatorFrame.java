@@ -2,8 +2,6 @@ package views.gui;
 
 import any.FigureSelector;
 import models.Board;
-import models.figures.Figure;
-import models.figures.support.FigureTypes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,6 +42,24 @@ public class BoardCreatorFrame extends JFrame {
                 gameDone = true;
                 dispose();
 
+        });
+
+        JMenuItem rotateToLeft = new JMenuItem("Вращать поле ↺");
+        actionMenu.add(rotateToLeft);
+        rotateToLeft.setVisible(true);
+
+        rotateToLeft.addActionListener(e -> {
+            board.rotateToLeft();
+            repaintBoard();
+        });
+
+        JMenuItem rotateToRight = new JMenuItem("Вращать поле ↷");
+        actionMenu.add(rotateToRight);
+        rotateToRight.setVisible(true);
+
+        rotateToRight.addActionListener(e -> {
+            board.rotateToRight();
+            repaintBoard();
         });
 
         JMenuItem exitItem = new JMenuItem("Exit");

@@ -1,9 +1,10 @@
-package models.figures;
+package models.figures.semaphores;
 
+import models.figures.Figure;
 import models.figures.support.FigureGroups;
 import models.figures.support.FigureTypes;
 
-public class VerticalSemaphore extends Figure {
+public final class VerticalSemaphore extends Figure {
 
     private static VerticalSemaphore instance;
 

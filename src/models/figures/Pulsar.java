@@ -6,7 +6,7 @@ import models.figures.support.FigureTypes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pulsar extends Figure {
+public final class Pulsar extends Figure {
     private static Pulsar instance;
 
     private Pulsar() {

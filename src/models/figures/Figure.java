@@ -34,7 +34,7 @@ public class Figure {
         return figureName;
     }
 
-    public void setCellLive(long row, long column) {
+    public final void setCellLive(long row, long column) {
         try {
             this.figureArray.get((int)row).set((int) column, CellsType.LIVE);
         } catch (IndexOutOfBoundsException ignored) {
@@ -42,23 +42,23 @@ public class Figure {
         }
     }
 
-    public long getHeight() {
+    public final long getHeight() {
         return figureArray.size();
     }
 
-    public long getWidth() {
+    public final long getWidth() {
         return figureArray.get(0).size();
     }
 
-    public List<List<CellsType>> getFigureArray() {
+    public final List<List<CellsType>> getFigureArray() {
         return figureArray;
     }
 
-    public FigureTypes getFigureTypes() {
+    public final FigureTypes getFigureTypes() {
         return this.figureTypes;
     }
 
-    public FigureGroups getFigureGroups() {
+    public final FigureGroups getFigureGroups() {
         return this.figureGroups;
     }
 
