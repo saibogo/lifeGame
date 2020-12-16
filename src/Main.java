@@ -1,3 +1,4 @@
+import any.Config;
 import controllers.BoardController;
 import models.Board;
 import models.Constants;
@@ -23,6 +24,8 @@ public class Main {
                 .setSleepInterval(700)
                 .setSizeCell(20)
                 .build();
+
+        Config config = Config.getInstance();
 
         Dimension boardDimension = new Dimension((int) constants.getMinimalWidth(), (int) constants.getMinimalHeight());
 

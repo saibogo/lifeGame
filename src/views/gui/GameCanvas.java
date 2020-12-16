@@ -1,5 +1,6 @@
 package views.gui;
 
+import any.Config;
 import models.Board;
 import models.CellsType;
 
@@ -9,10 +10,12 @@ import java.awt.*;
 public class GameCanvas extends JPanel {
 
     private Board board;
+    private Config config;
 
     public GameCanvas(Board board) {
 
         this.board = board;
+        this.config = Config.getInstance();
 
         this.setPreferredSize(new Dimension((int) (this.board.getConstants().getSizeCell() * this.board.getWidth()),
                 (int) this.board.getHeight() * this.board.getConstants().getSizeCell()));
@@ -26,7 +29,10 @@ public class GameCanvas extends JPanel {
         this.setPreferredSize(new Dimension((int) (size * this.board.getWidth()),
                 (int) this.board.getHeight() * size));
 
-        g.setColor(Color.BLACK);
+        g.setColor(this.config.getBackgroundColor());
+        g.fillRect(0, 0, size * (int) this.board.getWidth(), (int) this.board.getHeight() * size);
+
+        g.setColor(this.config.getLineColor());
 
         for (int j = 0; j < this.board.getWidth(); j++) {
             g.drawLine(j * size,
@@ -42,7 +48,7 @@ public class GameCanvas extends JPanel {
                     i * size);
         }
 
-        g.setColor(Color.RED);
+        g.setColor(this.config.getLiveCellColor());
 
         for (int i = 0; i < this.board.getHeight(); i++) {
             for (int j = 0; j < this.board.getWidth(); j++) {

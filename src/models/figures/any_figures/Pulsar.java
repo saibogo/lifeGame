@@ -1,5 +1,6 @@
-package models.figures;
+package models.figures.any_figures;
 
+import models.figures.Figure;
 import models.figures.support.FigureGroups;
 import models.figures.support.FigureTypes;
 

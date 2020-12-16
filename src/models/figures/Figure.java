@@ -74,4 +74,5 @@ public class Figure {
         }
         return builder.toString();
     }
+
 }

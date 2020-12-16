@@ -1,6 +1,11 @@
 package any;
 
 import models.figures.*;
+import models.figures.any_figures.Circle;
+import models.figures.any_figures.Pulsar;
+import models.figures.any_figures.Square2_2;
+import models.figures.ellipse.LeftDiagonalEllipse;
+import models.figures.ellipse.RightDiagonalEllipse;
 import models.figures.gliders.LeftGlider;
 import models.figures.gliders.RightGlider;
 import models.figures.gliders.UpGlider;
@@ -13,15 +18,24 @@ import models.figures.semaphores.HorizontalSemaphore;
 import models.figures.semaphores.Turnstile;
 import models.figures.semaphores.VerticalSemaphore;
 
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class FigureSelector {
     private final List<Figure> allFiguresList;
     private int numberSelectedFigure;
 
     public FigureSelector() {
+
         this.allFiguresList = new ArrayList<>();
+
+
+
         this.allFiguresList.add(HorizontalHive.getInstance());
         this.allFiguresList.add(HorizontalSemaphore.getInstance());
         this.allFiguresList.add(LeftGlider.getInstance());
@@ -36,6 +50,8 @@ public class FigureSelector {
         this.allFiguresList.add(RightDiagonalHive.getInstance());
         this.allFiguresList.add(LeftDiagonalHive.getInstance());
         this.allFiguresList.add(UpGlider.getInstance());
+        this.allFiguresList.add(RightDiagonalEllipse.getInstance());
+        this.allFiguresList.add(LeftDiagonalEllipse.getInstance());
 
         this.numberSelectedFigure = 0;
     }

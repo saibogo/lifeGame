@@ -24,5 +24,11 @@ public enum FigureGroups {
         public String toString() {
             return "Ульи";
         }
+    },
+    ELLIPSE {
+        @Override
+        public String toString() {
+            return "Элипсы";
+        }
     }
 }
