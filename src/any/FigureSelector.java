@@ -17,8 +17,12 @@ import models.figures.semaphores.Crossroads;
 import models.figures.semaphores.HorizontalSemaphore;
 import models.figures.semaphores.Turnstile;
 import models.figures.semaphores.VerticalSemaphore;
+import models.figures.support.XMLReader;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -34,7 +38,15 @@ public class FigureSelector {
 
         this.allFiguresList = new ArrayList<>();
 
-
+        try {
+            XMLReader.convertXMLToFiguresList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
 
         this.allFiguresList.add(HorizontalHive.getInstance());
         this.allFiguresList.add(HorizontalSemaphore.getInstance());

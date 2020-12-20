@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue>
+    <figure>
+        <name>Квадрат</name>
+        <width>2</width>
+        <height>2</height>
+        <type>STABLE</type>
+        <group>NONE</group>
+        <view>####</view>
+    </figure>
+    <figure>
+        <name>Ромб</name>
+        <width>3</width>
+        <height>3</height>
+        <type>STABLE</type>
+        <group>NONE</group>
+        <view>_#_#_#_#_</view>
+    </figure>
+</catalogue>
