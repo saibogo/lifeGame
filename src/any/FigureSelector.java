@@ -21,14 +21,9 @@ import models.figures.support.XMLReader;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class FigureSelector {
     private final List<Figure> allFiguresList;
@@ -39,7 +34,11 @@ public class FigureSelector {
         this.allFiguresList = new ArrayList<>();
 
         try {
-            XMLReader.convertXMLToFiguresList();
+            List<Figure> figureList =  XMLReader.convertXMLToFiguresList();
+            for (Figure figure: figureList) {
+                System.out.println("Получена фигура " + figure.getFigureName());
+                this.allFiguresList.add(figure);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SAXException e) {

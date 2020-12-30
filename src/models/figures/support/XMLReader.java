@@ -70,14 +70,37 @@ public class XMLReader {
                 figureType = FigureTypes.STABLE;
                 break;
         }
-        
-        return LeftDiagonalEllipse.getInstance();
+
+        FigureGroups figureGroups;
+        switch (parameters.get("group")) {
+            case "SEMAPHORE" :
+                figureGroups = FigureGroups.SEMAPHORE;
+                break;
+            case "GLIDERS" :
+                figureGroups = FigureGroups.GLIDERS;
+                break;
+            case "HIVES" :
+                figureGroups = FigureGroups.HIVES;
+                break;
+            case "ELLIPSE" :
+                figureGroups = FigureGroups.ELLIPSE;
+                break;
+            default:
+                figureGroups = FigureGroups.NONE;
+                break;
+        }
+
+        return new Figure(name, height, width, figureType, figureGroups);
     }
 
-    public static void convertXMLToFiguresList() throws IOException, SAXException, ParserConfigurationException {
+    public static List<Figure> convertXMLToFiguresList() throws IOException, SAXException, ParserConfigurationException {
+
+        List<Figure> result = new ArrayList<>();
         for (Map<String, String> map: readFigures()){
             Figure newFigure = convertXMLToFigure(map);
+            result.add(newFigure);
         }
+        return result;
     }
 
 }

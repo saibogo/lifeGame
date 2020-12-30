@@ -15,7 +15,7 @@ public class Figure {
     protected final FigureTypes figureTypes;
     protected final FigureGroups figureGroups;
 
-    protected Figure(String figureName, long height, long width, FigureTypes figureTypes, FigureGroups figureGroups) {
+    public Figure(String figureName, long height, long width, FigureTypes figureTypes, FigureGroups figureGroups) {
         this.figureName = figureName;
         this.figureTypes = figureTypes;
         this.figureGroups = figureGroups;
