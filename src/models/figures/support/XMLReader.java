@@ -1,6 +1,7 @@
 package models.figures.support;
 
 import models.CellsType;
+import models.Constants;
 import models.figures.Figure;
 import models.figures.ellipse.LeftDiagonalEllipse;
 import org.w3c.dom.Document;
@@ -55,12 +56,12 @@ public class XMLReader {
     }
 
     public static Figure convertXMLToFigure(Map<String, String> parameters) {
-        long width = Long.parseLong(parameters.get("width"));
-        long height = Long.parseLong(parameters.get("height"));
-        String name = parameters.get("name");
+        long width = Long.parseLong(parameters.get(Constants.widthString));
+        long height = Long.parseLong(parameters.get(Constants.heightString));
+        String name = parameters.get(Constants.nameString);
 
         FigureTypes figureType;
-        switch (parameters.get("type")) {
+        switch (parameters.get(Constants.typeString)) {
             case "PULSE" :
                 figureType = FigureTypes.PULSE;
                 break;
@@ -73,7 +74,7 @@ public class XMLReader {
         }
 
         FigureGroups figureGroups;
-        switch (parameters.get("group")) {
+        switch (parameters.get(Constants.groupString)) {
             case "SEMAPHORE" :
                 figureGroups = FigureGroups.SEMAPHORE;
                 break;
@@ -93,10 +94,10 @@ public class XMLReader {
 
         Figure result = new Figure(name, height, width, figureType, figureGroups);
         List<CellsType> tmp = new ArrayList<>();
-        for (Character character: parameters.get("view").toCharArray()){
-            if (character.equals('#')) {
+        for (Character character: parameters.get(Constants.viewString).toCharArray()){
+            if (character.equals(Constants.liveCellChar)) {
                 tmp.add(CellsType.LIVE);
-            } else if (character.equals('_')) {
+            } else if (character.equals(Constants.emptyCellChar)) {
                 tmp.add(CellsType.EMPTY);
             }
         }

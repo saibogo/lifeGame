@@ -4,6 +4,14 @@ public class Constants {
 
     public static String redString = (char)27 + "[31m";
     public static String whiteString = (char)27 + "[37m";
+    public static String nameString = "name";
+    public static String widthString = "width";
+    public static String heightString = "height";
+    public static String typeString = "type";
+    public static String groupString = "group";
+    public static String viewString = "view";
+    public static Character liveCellChar = '#';
+    public static Character emptyCellChar = '_';
 
     private long minimalHeight;
     private long minimalWidth;
