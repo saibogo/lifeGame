@@ -1,5 +1,6 @@
 package models.figures.support;
 
+import models.CellsType;
 import models.figures.Figure;
 import models.figures.ellipse.LeftDiagonalEllipse;
 import org.w3c.dom.Document;
@@ -90,7 +91,27 @@ public class XMLReader {
                 break;
         }
 
-        return new Figure(name, height, width, figureType, figureGroups);
+        Figure result = new Figure(name, height, width, figureType, figureGroups);
+        List<CellsType> tmp = new ArrayList<>();
+        for (Character character: parameters.get("view").toCharArray()){
+            if (character.equals('#')) {
+                tmp.add(CellsType.LIVE);
+            } else if (character.equals('_')) {
+                tmp.add(CellsType.EMPTY);
+            }
+        }
+
+        if (height * width == tmp.size()) {
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    if (tmp.get((int)(i * height + j)).equals(CellsType.LIVE)) {
+                        result.setCellLive(i, j);
+                    }
+                }
+            }
+        }
+
+        return result;
     }
 
     public static List<Figure> convertXMLToFiguresList() throws IOException, SAXException, ParserConfigurationException {

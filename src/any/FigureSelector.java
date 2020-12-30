@@ -3,7 +3,6 @@ package any;
 import models.figures.*;
 import models.figures.any_figures.Circle;
 import models.figures.any_figures.Pulsar;
-import models.figures.any_figures.Square2_2;
 import models.figures.ellipse.LeftDiagonalEllipse;
 import models.figures.ellipse.RightDiagonalEllipse;
 import models.figures.gliders.LeftGlider;
@@ -51,7 +50,6 @@ public class FigureSelector {
         this.allFiguresList.add(HorizontalSemaphore.getInstance());
         this.allFiguresList.add(LeftGlider.getInstance());
         this.allFiguresList.add(RightGlider.getInstance());
-        this.allFiguresList.add(Square2_2.getInstance());
         this.allFiguresList.add(VerticalHive.getInstance());
         this.allFiguresList.add(VerticalSemaphore.getInstance());
         this.allFiguresList.add(Pulsar.getInstance());
