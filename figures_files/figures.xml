@@ -71,17 +71,4 @@
             ##_
         </view>
     </figure>
-    <figure>
-        <name>Круг</name>
-        <width>4</width>
-        <height>4</height>
-        <type>STABLE</type>
-        <group>NONE</group>
-        <view>
-            _##_
-            #__#
-            #__#
-            _##_
-        </view>
-    </figure>
 </catalogue>

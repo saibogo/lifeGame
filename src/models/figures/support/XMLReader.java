@@ -17,7 +17,8 @@ import java.util.*;
 
 public class XMLReader {
 
-    public static List<Map<String, String>> readFigures(String filename) throws ParserConfigurationException, IOException, SAXException {
+    public static List<Map<String, String>> readFigures(String filename) throws ParserConfigurationException,
+            IOException, SAXException {
         List<Map<String, String>> result = new ArrayList<>();
         DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document document = builder.parse(filename);
@@ -78,11 +79,11 @@ public class XMLReader {
             case Constants.glidersGroupString:
                 figureGroups = FigureGroups.GLIDERS;
                 break;
-            case "HIVES":
+            case Constants.hivesGroupString:
                 figureGroups = FigureGroups.HIVES;
                 break;
-            case "ELLIPSE":
-                figureGroups = FigureGroups.ELLIPSE;
+            case Constants.sectorsGroupString:
+                figureGroups = FigureGroups.SECTORS;
                 break;
             default:
                 figureGroups = FigureGroups.NONE;
@@ -102,7 +103,7 @@ public class XMLReader {
         if (height * width == tmp.size()) {
             for (int i = 0; i < height; i++) {
                 for (int j = 0; j < width; j++) {
-                    if (tmp.get((int) (i * height + j)).equals(CellsType.LIVE)) {
+                    if (tmp.get((int) (i * width + j)).equals(CellsType.LIVE)) {
                         result.setCellLive(i, j);
                     }
                 }
@@ -112,14 +113,15 @@ public class XMLReader {
         return result;
     }
 
-    public static List<Figure> convertXMLToFiguresList() throws IOException, SAXException, ParserConfigurationException {
+    public static List<Figure> convertXMLToFiguresList() throws IOException, SAXException,
+            ParserConfigurationException {
 
         List<Figure> result = new ArrayList<>();
         String figuresCatalogue = "figures_files";
         File catalogue = new File(figuresCatalogue);
 
         if (catalogue.isDirectory()) {
-            List<String> files = Arrays.asList(Objects.requireNonNull(catalogue.list()));
+            String[] files = Objects.requireNonNull(catalogue.list());
             for (String fileName : files) {
                 String localPath = figuresCatalogue + File.separator + fileName;
                 System.out.println("Найден файл " + localPath);

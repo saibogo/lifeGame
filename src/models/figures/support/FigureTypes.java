@@ -18,6 +18,6 @@ public enum FigureTypes {
         public String toString() {
             return "Подвижные";
         }
-    };
+    }
 
 }

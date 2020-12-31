@@ -16,6 +16,8 @@ public class Constants {
     public static final String runTypeString = "RUN";
     public static final String semaphoreGroupString = "SEMAPHORE";
     public static final String glidersGroupString = "GLIDERS";
+    public static final String hivesGroupString = "HIVES";
+    public static final String sectorsGroupString = "SECTORS";
 
     private long minimalHeight;
     private long minimalWidth;

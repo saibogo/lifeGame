@@ -2,26 +2,24 @@
 <catalogue>
     <figure>
         <name>Вертикальный семафор</name>
-        <width>3</width>
+        <width>1</width>
         <height>3</height>
         <type>PULSE</type>
         <group>SEMAPHORE</group>
         <view>
-            _#_
-            _#_
-            _#_
+            #
+            #
+            #
         </view>
     </figure>
     <figure>
         <name>Горизонтальный семафор</name>
         <width>3</width>
-        <height>3</height>
+        <height>1</height>
         <type>PULSE</type>
         <group>SEMAPHORE</group>
         <view>
-            ___
             ###
-            ___
         </view>
     </figure>
     <figure>
@@ -84,6 +82,32 @@
             ___#
             #___
             ##__
+        </view>
+    </figure>
+    <figure>
+        <name>Двухполосный вертикальный семафор</name>
+        <width>1</width>
+        <height>7</height>
+        <type>PULSE</type>
+        <group>SEMAPHORE</group>
+        <view>
+            #
+            #
+            #
+            _
+            #
+            #
+            #
+        </view>
+    </figure>
+    <figure>
+        <name>Двухполосный горизонтальный семафор</name>
+        <width>7</width>
+        <height>1</height>
+        <type>PULSE</type>
+        <group>SEMAPHORE</group>
+        <view>
+            ###_###
         </view>
     </figure>
 </catalogue>

@@ -6,24 +6,18 @@ import models.figures.support.FigureGroups;
 import models.figures.support.FigureTypes;
 
 import javax.swing.*;
-import java.security.KeyException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SelectFiguresMenu extends JMenu {
 
-    private Map<FigureTypes, JMenu> noneGroupsFigures = new HashMap<>();
-    private Map<FigureGroups, JMenu> figuresInGroups = new HashMap<>();
-
-    private FigureSelector figureSelector;
-
     public SelectFiguresMenu(FigureSelector figureSelector) {
         super("Select");
-        this.figureSelector = figureSelector;
 
         JMenu runFigures = new JMenu("" + FigureTypes.RUN);
         runFigures.setVisible(true);
         this.add(runFigures);
+        Map<FigureTypes, JMenu> noneGroupsFigures = new HashMap<>();
         noneGroupsFigures.put(FigureTypes.RUN, runFigures);
 
         JMenu stableFigures = new JMenu("" + FigureTypes.STABLE);
@@ -40,6 +34,7 @@ public class SelectFiguresMenu extends JMenu {
         JMenu hivesGroup = new JMenu("" + FigureGroups.HIVES);
         hivesGroup.setVisible(true);
         stableFigures.add(hivesGroup);
+        Map<FigureGroups, JMenu> figuresInGroups = new HashMap<>();
         figuresInGroups.put(FigureGroups.HIVES, hivesGroup);
 
         JMenu semaphoreGroup = new JMenu("" + FigureGroups.SEMAPHORE);
@@ -52,42 +47,17 @@ public class SelectFiguresMenu extends JMenu {
         runFigures.add(glidersGroup);
         figuresInGroups.put(FigureGroups.GLIDERS, glidersGroup);
 
-        JMenu ellipseGroup = new JMenu("" + FigureGroups.ELLIPSE);
-        ellipseGroup.setVisible(true);
-        stableFigures.add(ellipseGroup);
-        figuresInGroups.put(FigureGroups.ELLIPSE, ellipseGroup);
+        JMenu sectorsGroup = new JMenu("" + FigureGroups.SECTORS);
+        sectorsGroup.setVisible(true);
+        stableFigures.add(sectorsGroup);
+        figuresInGroups.put(FigureGroups.SECTORS, sectorsGroup);
+
 
         for (int i = 0; i < figureSelector.getFiguresCount(); i++) {
             JMenuItem figureItem = new JMenuItem(figureSelector.getAllFiguresNames().get(i));
             int finalI = i;
             figureItem.addActionListener(actionEvent -> figureSelector.setNumberSelectedFigure(finalI));
             Figure tmpFigure = figureSelector.getFigureNumber(i);
-/*
-            if (tmpFigure.getFigureGroups().equals(FigureGroups.NONE)) {
-
-                if (tmpFigure.getFigureTypes().equals(FigureTypes.RUN)) {
-                    runFigures.add(figureItem);
-                }
-                if (tmpFigure.getFigureTypes().equals(FigureTypes.PULSE)) {
-                    pulseFigures.add(figureItem);
-                }
-                if (tmpFigure.getFigureTypes().equals(FigureTypes.STABLE)) {
-                    stableFigures.add(figureItem);
-                }
-            } else {
-                if (tmpFigure.getFigureGroups().equals(FigureGroups.HIVES)) {
-                    hivesGroup.add(figureItem);
-                }
-                if (tmpFigure.getFigureGroups().equals(FigureGroups.SEMAPHORE)) {
-                    semaphoreGroup.add(figureItem);
-                }
-                if (tmpFigure.getFigureGroups().equals(FigureGroups.GLIDERS)) {
-                    glidersGroup.add(figureItem);
-                }
-                if (tmpFigure.getFigureGroups().equals(FigureGroups.ELLIPSE)) {
-                    ellipseGroup.add(figureItem);
-                }
-            }*/
 
             if (tmpFigure.getFigureGroups().equals(FigureGroups.NONE)) {
                 noneGroupsFigures.get(tmpFigure.getFigureTypes()).add(figureItem);

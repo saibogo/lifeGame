@@ -25,10 +25,10 @@ public enum FigureGroups {
             return "Ульи";
         }
     },
-    ELLIPSE {
+    SECTORS {
         @Override
         public String toString() {
-            return "Элипсы";
+            return "Сектора";
         }
     }
 }
