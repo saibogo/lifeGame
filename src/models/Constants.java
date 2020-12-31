@@ -4,14 +4,18 @@ public class Constants {
 
     public static String redString = (char)27 + "[31m";
     public static String whiteString = (char)27 + "[37m";
-    public static String nameString = "name";
-    public static String widthString = "width";
-    public static String heightString = "height";
-    public static String typeString = "type";
-    public static String groupString = "group";
-    public static String viewString = "view";
-    public static Character liveCellChar = '#';
-    public static Character emptyCellChar = '_';
+    public static final String nameString = "name";
+    public static final String widthString = "width";
+    public static final String heightString = "height";
+    public static final String typeString = "type";
+    public static final String groupString = "group";
+    public static final String viewString = "view";
+    public static final Character liveCellChar = '#';
+    public static final Character emptyCellChar = '_';
+    public static final String pulseTypeString = "PULSE";
+    public static final String runTypeString = "RUN";
+    public static final String semaphoreGroupString = "SEMAPHORE";
+    public static final String glidersGroupString = "GLIDERS";
 
     private long minimalHeight;
     private long minimalWidth;

@@ -3,7 +3,6 @@ package models.figures.support;
 import models.CellsType;
 import models.Constants;
 import models.figures.Figure;
-import models.figures.ellipse.LeftDiagonalEllipse;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -12,25 +11,23 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class XMLReader {
 
-    public static List<Map<String, String>> readFigures() throws ParserConfigurationException, IOException, SAXException {
+    public static List<Map<String, String>> readFigures(String filename) throws ParserConfigurationException, IOException, SAXException {
         List<Map<String, String>> result = new ArrayList<>();
         DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        Document document = builder.parse("figures.xml");
+        Document document = builder.parse(filename);
 
         Node root = document.getDocumentElement();
         System.out.println(root.getNodeName());
         NodeList nodeList = root.getChildNodes();
         List<Node> figuresList = new ArrayList<>();
         for (int i = 0; i < nodeList.getLength(); i++) {
-            if(nodeList.item(i).getNodeName().equals("figure")) {
+            if (nodeList.item(i).getNodeName().equals("figure")) {
                 figuresList.add(nodeList.item(i));
             }
         }
@@ -40,12 +37,12 @@ public class XMLReader {
             NodeList figureParameters = node.getChildNodes();
             Map<String, String> parametersMap = new HashMap<>();
             for (int i = 0; i < figureParameters.getLength(); i++) {
-               if (figureParameters.item(i).getNodeType() != Node.TEXT_NODE) {
-                  parametersMap.put(figureParameters.item(i).getNodeName().trim(),
-                          figureParameters.item(i).getTextContent().trim());
-               }
+                if (figureParameters.item(i).getNodeType() != Node.TEXT_NODE) {
+                    parametersMap.put(figureParameters.item(i).getNodeName().trim(),
+                            figureParameters.item(i).getTextContent().trim());
+                }
             }
-            for (String key: parametersMap.keySet()) {
+            for (String key : parametersMap.keySet()) {
                 System.out.println(key + " -> " + parametersMap.get(key));
             }
             System.out.println("Найдено " + parametersMap.size() + " параметров");
@@ -62,10 +59,10 @@ public class XMLReader {
 
         FigureTypes figureType;
         switch (parameters.get(Constants.typeString)) {
-            case "PULSE" :
+            case Constants.pulseTypeString:
                 figureType = FigureTypes.PULSE;
                 break;
-            case "RUN" :
+            case Constants.runTypeString:
                 figureType = FigureTypes.RUN;
                 break;
             default:
@@ -75,16 +72,16 @@ public class XMLReader {
 
         FigureGroups figureGroups;
         switch (parameters.get(Constants.groupString)) {
-            case "SEMAPHORE" :
+            case Constants.semaphoreGroupString:
                 figureGroups = FigureGroups.SEMAPHORE;
                 break;
-            case "GLIDERS" :
+            case Constants.glidersGroupString:
                 figureGroups = FigureGroups.GLIDERS;
                 break;
-            case "HIVES" :
+            case "HIVES":
                 figureGroups = FigureGroups.HIVES;
                 break;
-            case "ELLIPSE" :
+            case "ELLIPSE":
                 figureGroups = FigureGroups.ELLIPSE;
                 break;
             default:
@@ -94,7 +91,7 @@ public class XMLReader {
 
         Figure result = new Figure(name, height, width, figureType, figureGroups);
         List<CellsType> tmp = new ArrayList<>();
-        for (Character character: parameters.get(Constants.viewString).toCharArray()){
+        for (Character character : parameters.get(Constants.viewString).toCharArray()) {
             if (character.equals(Constants.liveCellChar)) {
                 tmp.add(CellsType.LIVE);
             } else if (character.equals(Constants.emptyCellChar)) {
@@ -105,7 +102,7 @@ public class XMLReader {
         if (height * width == tmp.size()) {
             for (int i = 0; i < height; i++) {
                 for (int j = 0; j < width; j++) {
-                    if (tmp.get((int)(i * height + j)).equals(CellsType.LIVE)) {
+                    if (tmp.get((int) (i * height + j)).equals(CellsType.LIVE)) {
                         result.setCellLive(i, j);
                     }
                 }
@@ -118,11 +115,23 @@ public class XMLReader {
     public static List<Figure> convertXMLToFiguresList() throws IOException, SAXException, ParserConfigurationException {
 
         List<Figure> result = new ArrayList<>();
-        for (Map<String, String> map: readFigures()){
-            Figure newFigure = convertXMLToFigure(map);
-            result.add(newFigure);
+        String figuresCatalogue = "figures_files";
+        File catalogue = new File(figuresCatalogue);
+
+        if (catalogue.isDirectory()) {
+            List<String> files = Arrays.asList(Objects.requireNonNull(catalogue.list()));
+            for (String fileName : files) {
+                String localPath = figuresCatalogue + File.separator + fileName;
+                System.out.println("Найден файл " + localPath);
+
+
+                for (Map<String, String> map : readFigures(localPath)) {
+                    Figure newFigure = convertXMLToFigure(map);
+                    result.add(newFigure);
+                }
+            }
         }
         return result;
-    }
 
+    }
 }

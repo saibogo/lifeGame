@@ -1,21 +1,13 @@
 package any;
 
 import models.figures.*;
-import models.figures.any_figures.Circle;
 import models.figures.any_figures.Pulsar;
 import models.figures.ellipse.LeftDiagonalEllipse;
 import models.figures.ellipse.RightDiagonalEllipse;
-import models.figures.gliders.LeftGlider;
-import models.figures.gliders.RightGlider;
-import models.figures.gliders.UpGlider;
 import models.figures.hives.HorizontalHive;
 import models.figures.hives.LeftDiagonalHive;
 import models.figures.hives.RightDiagonalHive;
 import models.figures.hives.VerticalHive;
-import models.figures.semaphores.Crossroads;
-import models.figures.semaphores.HorizontalSemaphore;
-import models.figures.semaphores.Turnstile;
-import models.figures.semaphores.VerticalSemaphore;
 import models.figures.support.XMLReader;
 import org.xml.sax.SAXException;
 
@@ -34,6 +26,7 @@ public class FigureSelector {
 
         try {
             List<Figure> figureList =  XMLReader.convertXMLToFiguresList();
+            System.out.println("Всего загружено фигур " + figureList.size());
             for (Figure figure: figureList) {
                 System.out.println("Получена фигура " + figure.getFigureName());
                 this.allFiguresList.add(figure);
@@ -47,18 +40,10 @@ public class FigureSelector {
         }
 
         this.allFiguresList.add(HorizontalHive.getInstance());
-        this.allFiguresList.add(HorizontalSemaphore.getInstance());
-        this.allFiguresList.add(LeftGlider.getInstance());
-        this.allFiguresList.add(RightGlider.getInstance());
         this.allFiguresList.add(VerticalHive.getInstance());
-        this.allFiguresList.add(VerticalSemaphore.getInstance());
         this.allFiguresList.add(Pulsar.getInstance());
-        this.allFiguresList.add(Crossroads.getInstance());
-        this.allFiguresList.add(Turnstile.getInstance());
-        this.allFiguresList.add(Circle.getInstance());
         this.allFiguresList.add(RightDiagonalHive.getInstance());
         this.allFiguresList.add(LeftDiagonalHive.getInstance());
-        this.allFiguresList.add(UpGlider.getInstance());
         this.allFiguresList.add(RightDiagonalEllipse.getInstance());
         this.allFiguresList.add(LeftDiagonalEllipse.getInstance());
 
