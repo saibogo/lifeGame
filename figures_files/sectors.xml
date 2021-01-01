@@ -26,6 +26,18 @@
         </view>
     </figure>
     <figure>
+        <name>Второй сектор</name>
+        <width>3</width>
+        <height>3</height>
+        <type>STABLE</type>
+        <group>SECTORS</group>
+        <view>
+            _#_
+            #_#
+            _##
+        </view>
+    </figure>
+    <figure>
         <name>Третий сектор</name>
         <width>3</width>
         <height>3</height>
@@ -33,6 +45,18 @@
         <group>SECTORS</group>
         <view>
             _##
+            #_#
+            _#_
+        </view>
+    </figure>
+    <figure>
+        <name>Четвертый сектор</name>
+        <width>3</width>
+        <height>3</height>
+        <type>STABLE</type>
+        <group>SECTORS</group>
+        <view>
+            ##_
             #_#
             _#_
         </view>
