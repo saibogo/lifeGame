@@ -4,43 +4,70 @@ import models.Board;
 import models.CellsType;
 import models.figures.Figure;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BoardController {
     private final Board board;
+    private final List<LifeThread> threadList;
+    private final List<GenerationThread> generationThreadList;
 
-    public BoardController(Board board) {
+    public BoardController(Board board)
+    {
         this.board = board;
+        this.threadList = new ArrayList<>();
+        this.generationThreadList = new ArrayList<>();
+
     }
 
     private void mainRule() {
-        long height = this.board.getHeight();
-        long width = this.board.getWidth();
-        for (long i = 0; i < height; i++) {
-            for (long j = 0; j < width; j++) {
-                long countNeighbours = this.board.getNeighboursCount(i, j);
-                if (this.board.getCell(i, j).equals(CellsType.LIVE) && (countNeighbours > 3 || countNeighbours < 2)) {
-                    this.board.setCell(CellsType.DEAD, i, j);
-                }
-                if (this.board.getCell(i, j).equals(CellsType.EMPTY) && countNeighbours == 3) {
-                    this.board.setCell(CellsType.BORN, i, j);
-                }
+
+        this.threadList.clear();
+        int countThreads = board.getConstants().getMaximalThreadCount();
+        long delta = board.getHeight() / countThreads;
+        delta = (board.getHeight() % countThreads == 0) ? delta : delta + 1;
+
+        for (int i = 0; i < countThreads; i++) {
+            this.threadList.add(new LifeThread(this.board, i * delta, (i + 1) * delta - 1));
+        }
+
+        for (LifeThread thread: this.threadList) {
+            thread.start();
+        }
+
+        for (LifeThread thread: this.threadList) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
+
     }
 
     private void newGeneration() {
-        long height = this.board.getHeight();
-        long width = this.board.getWidth();
 
-        for (long i = 0; i < height; i++) {
-            for (long j = 0; j < width; j++) {
-                if (this.board.getCell(i, j).equals(CellsType.DEAD)) {
-                    this.board.setCell(CellsType.EMPTY, i, j);
-                }
-                if (this.board.getCell(i, j).equals(CellsType.BORN)) {
-                    this.board.setCell(CellsType.LIVE, i, j);
-                }
+        this.generationThreadList.clear();
+        int countThreads = board.getConstants().getMaximalThreadCount();
+        long delta = board.getHeight() / countThreads;
+        delta = (board.getHeight() % countThreads == 0) ? delta : delta + 1;
+
+        for (int i = 0; i < countThreads; i++) {
+            this.generationThreadList.add(new GenerationThread(this.board, i * delta, (i + 1) * delta - 1));
+        }
+
+        for (GenerationThread thread: this.generationThreadList) {
+            thread.start();
+        }
+
+        for (GenerationThread thread: this.generationThreadList) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
+
     }
 
     private boolean needAddLeftBorder() {

@@ -19,10 +19,13 @@ public class Constants {
     public static final String hivesGroupString = "HIVES";
     public static final String sectorsGroupString = "SECTORS";
 
+
     private long minimalHeight;
     private long minimalWidth;
     private long sleepInterval;
     private int sizeCell;
+    private int maximalThreadCount;
+
 
 
     private Constants(Constants.Builder builder) {
@@ -30,7 +33,12 @@ public class Constants {
         this.minimalWidth = builder.minimalWidth;
         this.sleepInterval = builder.sleepInterval;
         this.sizeCell = builder.sizeCell;
+        this.maximalThreadCount = Runtime.getRuntime().availableProcessors();
 
+    }
+
+    public int getMaximalThreadCount() {
+        return maximalThreadCount;
     }
 
     public int getSizeCell() {
