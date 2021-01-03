@@ -58,37 +58,22 @@ public class XMLReader {
         long height = Long.parseLong(parameters.get(Constants.heightString));
         String name = parameters.get(Constants.nameString);
 
-        FigureTypes figureType;
-        switch (parameters.get(Constants.typeString)) {
-            case Constants.pulseTypeString:
-                figureType = FigureTypes.PULSE;
-                break;
-            case Constants.runTypeString:
-                figureType = FigureTypes.RUN;
-                break;
-            default:
-                figureType = FigureTypes.STABLE;
-                break;
-        }
 
-        FigureGroups figureGroups;
-        switch (parameters.get(Constants.groupString)) {
-            case Constants.semaphoreGroupString:
-                figureGroups = FigureGroups.SEMAPHORE;
-                break;
-            case Constants.glidersGroupString:
-                figureGroups = FigureGroups.GLIDERS;
-                break;
-            case Constants.hivesGroupString:
-                figureGroups = FigureGroups.HIVES;
-                break;
-            case Constants.sectorsGroupString:
-                figureGroups = FigureGroups.SECTORS;
-                break;
-            default:
-                figureGroups = FigureGroups.NONE;
-                break;
-        }
+        FigureTypes figureType = switch (parameters.get(Constants.typeString)) {
+            case Constants.pulseTypeString -> FigureTypes.PULSE;
+            case Constants.runTypeString -> FigureTypes.RUN;
+            default -> FigureTypes.STABLE;
+        };
+
+
+        FigureGroups figureGroups = switch (parameters.get(Constants.groupString)) {
+            case Constants.semaphoreGroupString -> FigureGroups.SEMAPHORE;
+            case Constants.glidersGroupString -> FigureGroups.GLIDERS;
+            case Constants.hivesGroupString -> FigureGroups.HIVES;
+            case Constants.sectorsGroupString -> FigureGroups.SECTORS;
+            case Constants.pulsedHivesGroup -> FigureGroups.PULSED_HIVES;
+            default -> FigureGroups.NONE;
+        };
 
         Figure result = new Figure(name, height, width, figureType, figureGroups);
         List<CellsType> tmp = new ArrayList<>();

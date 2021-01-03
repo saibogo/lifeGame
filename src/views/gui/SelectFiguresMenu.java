@@ -52,6 +52,11 @@ public class SelectFiguresMenu extends JMenu {
         stableFigures.add(sectorsGroup);
         figuresInGroups.put(FigureGroups.SECTORS, sectorsGroup);
 
+        JMenu pulsedHivesGroup = new JMenu("" + FigureGroups.PULSED_HIVES);
+        pulsedHivesGroup.setVisible(true);
+        pulseFigures.add(pulsedHivesGroup);
+        figuresInGroups.put(FigureGroups.PULSED_HIVES, pulsedHivesGroup);
+
 
         for (int i = 0; i < figureSelector.getFiguresCount(); i++) {
             JMenuItem figureItem = new JMenuItem(figureSelector.getAllFiguresNames().get(i));

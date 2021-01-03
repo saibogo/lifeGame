@@ -30,5 +30,11 @@ public enum FigureGroups {
         public String toString() {
             return "Сектора";
         }
+    },
+    PULSED_HIVES {
+        @Override
+        public String toString() {
+            return "Пульсирующие ульи";
+        }
     }
 }

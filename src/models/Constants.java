@@ -18,6 +18,7 @@ public class Constants {
     public static final String glidersGroupString = "GLIDERS";
     public static final String hivesGroupString = "HIVES";
     public static final String sectorsGroupString = "SECTORS";
+    public static final String pulsedHivesGroup = "PULSED_HIVES";
 
 
     private long minimalHeight;
