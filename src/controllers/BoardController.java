@@ -1,5 +1,6 @@
 package controllers;
 
+import any.Config;
 import models.Board;
 import models.CellsType;
 import models.figures.Figure;
@@ -11,6 +12,7 @@ public class BoardController {
     private final Board board;
     private final List<LifeThread> threadList;
     private final List<GenerationThread> generationThreadList;
+    private boolean viewBornDeadCell = true;
 
     public BoardController(Board board)
     {
@@ -195,10 +197,25 @@ public class BoardController {
     }
 
     public void iteration() {
-        this.mainRule();
-        this.newGeneration();
-        this.addBorderIfNeed();
-        this.removeBordersIfNeed();
+
+        if (Config.getInstance().isViewAllStepGeneration()) {
+            if (this.viewBornDeadCell) {
+                this.mainRule();
+                this.addBorderIfNeed();
+                this.removeBordersIfNeed();
+            } else {
+                this.mainRule();
+                this.newGeneration();
+                this.addBorderIfNeed();
+                this.removeBordersIfNeed();
+            }
+            this.viewBornDeadCell = !this.viewBornDeadCell;
+        } else {
+            this.mainRule();
+            this.newGeneration();
+            this.addBorderIfNeed();
+            this.removeBordersIfNeed();
+        }
     }
 
     public void  insert(Figure figure, long row, long column) {

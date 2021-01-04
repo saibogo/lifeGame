@@ -61,4 +61,56 @@
             _#_
         </view>
     </figure>
+    <figure>
+        <name>Правая верхняя полусфера</name>
+        <width>4</width>
+        <height>4</height>
+        <type>STABLE</type>
+        <group>SECTORS</group>
+        <view>
+            _##_
+            #__#
+            _#_#
+            __#_
+        </view>
+    </figure>
+    <figure>
+        <name>Правая нижняя полусфера</name>
+        <width>4</width>
+        <height>4</height>
+        <type>STABLE</type>
+        <group>SECTORS</group>
+        <view>
+            __#_
+            _#_#
+            #__#
+            _##_
+        </view>
+    </figure>
+    <figure>
+        <name>Левая верхняя полусфера</name>
+        <width>4</width>
+        <height>4</height>
+        <type>STABLE</type>
+        <group>SECTORS</group>
+        <view>
+            _##_
+            #__#
+            #_#_
+            _#__
+        </view>
+    </figure>
+    <figure>
+        <name>Левая нижняя полусфера</name>
+        <width>4</width>
+        <height>4</height>
+        <type>STABLE</type>
+        <group>SECTORS</group>
+        <view>
+            _#__
+            #_#_
+            #__#
+            _##_
+        </view>
+    </figure>
 </catalogue>
