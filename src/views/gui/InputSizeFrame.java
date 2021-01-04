@@ -1,5 +1,6 @@
 package views.gui;
 
+import any.Config;
 import any.DigitFilter;
 import models.Constants;
 
@@ -20,7 +21,7 @@ public class InputSizeFrame extends JFrame {
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setLayout(new GridLayout(8, 2));
+        this.setLayout(new GridLayout(9, 2));
 
         JLabel label = new JLabel("Задайте размеры поля");
         this.add(label);
@@ -97,12 +98,22 @@ public class InputSizeFrame extends JFrame {
         timeSleepField.setVisible(true);
 
 
+        JLabel allGenerationRadioButton = new JLabel("Показывать все стадии клетки");
+        this.add(allGenerationRadioButton);
+        allGenerationRadioButton.setVisible(true);
+
+        JCheckBox allGenerationCheckBox = new JCheckBox();
+        this.add(allGenerationCheckBox);
+        allGenerationCheckBox.setVisible(true);
+
+
         JButton createDimensionButton = new JButton("Применить");
         createDimensionButton.addActionListener(e -> {
             constants.setMinimalHeight(Long.parseLong(minimalHeightField.getText()));
             constants.setMinimalWidth(Long.parseLong(minimalWidthField.getText()));
             constants.setSizeCell(Integer.parseInt(sizeCellField.getText()));
             constants.setSleepInterval(Long.parseLong(timeSleepField.getText()));
+            Config.getInstance().setViewAllStepGeneration(allGenerationCheckBox.isSelected());
             dimension.height = Math.max(Integer.parseInt(fieldHeight.getText()), (int)constants.getMinimalHeight());
             dimension.width = Math.max(Integer.parseInt(fieldWidth.getText()), (int)constants.getMinimalWidth());
             frameIsRunning = false;
