@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue>
+    <figure>
+        <name>Вертикальный семафор</name>
+        <width>1</width>
+        <height>3</height>
+        <type>PULSE</type>
+        <group>SEMAPHORE</group>
+        <view>
+            #
+            #
+            #
+        </view>
+    </figure>
+    <figure>
+        <name>Горизонтальный семафор</name>
+        <width>3</width>
+        <height>1</height>
+        <type>PULSE</type>
+        <group>SEMAPHORE</group>
+        <view>
+            ###
+        </view>
+    </figure>
+    <figure>
+        <name>Открытый перекресток</name>
+        <width>9</width>
+        <height>9</height>
+        <type>PULSE</type>
+        <group>SEMAPHORE</group>
+        <view>
+            ____#____
+            ____#____
+            ____#____
+            _________
+            ###___###
+            _________
+            ____#____
+            ____#____
+            ____#____
+        </view>
+    </figure>
+    <figure>
+        <name>Закрытый перекресток</name>
+        <width>9</width>
+        <height>9</height>
+        <type>PULSE</type>
+        <group>SEMAPHORE</group>
+        <view>
+            _________
+            ___###___
+            _________
+            _#_____#_
+            _#_____#_
+            _#_____#_
+            _________
+            ___###___
+            _________
+        </view>
+    </figure>
+    <figure>
+        <name>Праводиагональный турникет</name>
+        <width>4</width>
+        <height>4</height>
+        <type>PULSE</type>
+        <group>SEMAPHORE</group>
+        <view>
+            ##__
+            #___
+            ___#
+            __##
+        </view>
+    </figure>
+    <figure>
+        <name>Леводиагональный турникет</name>
+        <width>4</width>
+        <height>4</height>
+        <type>PULSE</type>
+        <group>SEMAPHORE</group>
+        <view>
+            __##
+            ___#
+            #___
+            ##__
+        </view>
+    </figure>
+    <figure>
+        <name>Двухполосный вертикальный семафор</name>
+        <width>1</width>
+        <height>7</height>
+        <type>PULSE</type>
+        <group>SEMAPHORE</group>
+        <view>
+            #
+            #
+            #
+            _
+            #
+            #
+            #
+        </view>
+    </figure>
+    <figure>
+        <name>Двухполосный горизонтальный семафор</name>
+        <width>7</width>
+        <height>1</height>
+        <type>PULSE</type>
+        <group>SEMAPHORE</group>
+        <view>
+            ###_###
+        </view>
+    </figure>
+</catalogue>

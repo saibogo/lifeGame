@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue>
+    <figure>
+        <name>Горизонтальный улей</name>
+        <width>4</width>
+        <height>3</height>
+        <type>STABLE</type>
+        <group>HIVES</group>
+        <view>
+            _##_
+            #__#
+            _##_
+        </view>
+    </figure>
+    <figure>
+        <name>Вертикальный улей</name>
+        <width>3</width>
+        <height>4</height>
+        <type>STABLE</type>
+        <group>HIVES</group>
+        <view>
+            _#_
+            #_#
+            #_#
+            _#_
+        </view>
+    </figure>
+    <figure>
+        <name>Праводиагональный улей</name>
+        <width>3</width>
+        <height>3</height>
+        <type>STABLE</type>
+        <group>HIVES</group>
+        <view>
+            _##
+            #_#
+            ##_
+        </view>
+    </figure>
+    <figure>
+        <name>Леводиагональный улей</name>
+        <width>3</width>
+        <height>3</height>
+        <type>STABLE</type>
+        <group>HIVES</group>
+        <view>
+            ##_
+            #_#
+            _##
+        </view>
+    </figure>
+    <figure>
+        <name>Вертикальный пульсирующий улей</name>
+        <width>5</width>
+        <height>10</height>
+        <type>PULSE</type>
+        <group>PULSED_HIVES</group>
+        <view>
+            __#__
+            _#_#_
+            #___#
+            #___#
+            #___#
+            #___#
+            #___#
+            #___#
+            _#_#_
+            __#__
+        </view>
+    </figure>
+    <figure>
+        <name>Горизонтальный пульсирующий улей</name>
+        <width>10</width>
+        <height>5</height>
+        <type>PULSE</type>
+        <group>PULSED_HIVES</group>
+        <view>
+            __######__
+            _#______#_
+            #________#
+            _#______#_
+            __######__
+        </view>
+    </figure>
+</catalogue>
