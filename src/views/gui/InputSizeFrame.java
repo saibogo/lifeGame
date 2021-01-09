@@ -9,12 +9,20 @@ import models.figures.support.Localisation;
 import javax.swing.*;
 import javax.swing.text.PlainDocument;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class InputSizeFrame extends JFrame {
 
     private boolean frameIsRunning;
+    private final JLabel labelLang;
+    private final JLabel mainLabel;
+    private final JLabel labelHeight;
+    private final JLabel minimalHeightLabel;
+    private final JLabel labelWidth;
+    private final JLabel minimalWidthLabel;
+    private final JLabel sizeCellLabel;
+    private final JLabel timeSleepLabel;
+    private final JLabel allGenerationRadioButton;
+    private final JButton createDimensionButton;
 
     public InputSizeFrame(Dimension dimension, Constants constants) throws HeadlessException {
         super(Localisation.SetBoardParametersText());
@@ -27,9 +35,9 @@ public class InputSizeFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setLayout(new GridLayout(10, 2));
 
-        JLabel labelLang = new JLabel(Localisation.LanguageLabelText());
-        this.add(labelLang);
-        labelLang.setVisible(true);
+        this.labelLang = new JLabel();
+        this.add(this.labelLang);
+        this.labelLang.setVisible(true);
 
         ButtonGroup langButtonGroup = new ButtonGroup();
         JPanel langButtonPanel = new JPanel();
@@ -46,15 +54,15 @@ public class InputSizeFrame extends JFrame {
         langButtonPanel.add(engButton);
 
 
-        JLabel label = new JLabel(Localisation.SetSizeBoardText());
-        this.add(label);
-        label.setVisible(true);
+        this.mainLabel = new JLabel();
+        this.add(this.mainLabel);
+        this.mainLabel.setVisible(true);
 
         this.add(new JLabel());
 
-        JLabel labelHeight = new JLabel(Localisation.CellsInHeightText());
-        this.add(labelHeight);
-        labelHeight.setVisible(true);
+        this.labelHeight = new JLabel();
+        this.add(this.labelHeight);
+        this.labelHeight.setVisible(true);
 
 
         JTextField fieldHeight = new JTextField(10);
@@ -64,9 +72,9 @@ public class InputSizeFrame extends JFrame {
         this.add(fieldHeight);
         fieldHeight.setVisible(true);
 
-        JLabel minimalHeightLabel = new JLabel(Localisation.MinimalHeightText());
-        this.add(minimalHeightLabel);
-        minimalHeightLabel.setVisible(true);
+        this.minimalHeightLabel = new JLabel();
+        this.add(this.minimalHeightLabel);
+        this.minimalHeightLabel.setVisible(true);
 
         JTextField minimalHeightField = new JTextField(10);
         PlainDocument doc2 = (PlainDocument) minimalHeightField.getDocument();
@@ -76,9 +84,9 @@ public class InputSizeFrame extends JFrame {
         minimalHeightField.setVisible(true);
 
 
-        JLabel labelWidth = new JLabel(Localisation.CellsInWidthText());
-        this.add(labelWidth);
-        labelWidth.setVisible(true);
+        this.labelWidth = new JLabel();
+        this.add(this.labelWidth);
+        this.labelWidth.setVisible(true);
 
         JTextField fieldWidth = new JTextField(10);
         PlainDocument doc1 = (PlainDocument) fieldWidth.getDocument();
@@ -87,9 +95,9 @@ public class InputSizeFrame extends JFrame {
         this.add(fieldWidth);
         fieldWidth.setVisible(true);
 
-        JLabel minimalWidthLabel = new JLabel(Localisation.MinimalWidthText());
-        this.add(minimalWidthLabel);
-        minimalWidthLabel.setVisible(true);
+        this.minimalWidthLabel = new JLabel();
+        this.add(this.minimalWidthLabel);
+        this.minimalWidthLabel.setVisible(true);
 
         JTextField minimalWidthField = new JTextField(10);
         PlainDocument doc3 = (PlainDocument) minimalWidthField.getDocument();
@@ -98,9 +106,9 @@ public class InputSizeFrame extends JFrame {
         this.add(minimalWidthField);
         minimalWidthField.setVisible(true);
 
-        JLabel sizeCellLabel = new JLabel(Localisation.CellSizeText());
-        this.add(sizeCellLabel);
-        sizeCellLabel.setVisible(true);
+        this.sizeCellLabel = new JLabel();
+        this.add(this.sizeCellLabel);
+        this.sizeCellLabel.setVisible(true);
 
         JTextField sizeCellField = new JTextField(10);
         PlainDocument doc4 = (PlainDocument) sizeCellField.getDocument();
@@ -109,9 +117,9 @@ public class InputSizeFrame extends JFrame {
         this.add(sizeCellField);
         sizeCellField.setVisible(true);
 
-        JLabel timeSleepLabel = new JLabel(Localisation.GenerationPauseText());
-        this.add(timeSleepLabel);
-        timeSleepLabel.setVisible(true);
+        this.timeSleepLabel = new JLabel();
+        this.add(this.timeSleepLabel);
+        this.timeSleepLabel.setVisible(true);
 
         JTextField timeSleepField = new JTextField(10);
         PlainDocument doc5 = (PlainDocument) timeSleepField.getDocument();
@@ -121,16 +129,16 @@ public class InputSizeFrame extends JFrame {
         timeSleepField.setVisible(true);
 
 
-        JLabel allGenerationRadioButton = new JLabel(Localisation.AllStageCellText());
-        this.add(allGenerationRadioButton);
-        allGenerationRadioButton.setVisible(true);
+        this.allGenerationRadioButton = new JLabel();
+        this.add(this.allGenerationRadioButton);
+        this.allGenerationRadioButton.setVisible(true);
 
         JCheckBox allGenerationCheckBox = new JCheckBox();
         this.add(allGenerationCheckBox);
         allGenerationCheckBox.setVisible(true);
 
 
-        JButton createDimensionButton = new JButton(Localisation.ApplyText());
+        this.createDimensionButton = new JButton();
         createDimensionButton.addActionListener(e -> {
             constants.setMinimalHeight(Long.parseLong(minimalHeightField.getText()));
             constants.setMinimalWidth(Long.parseLong(minimalWidthField.getText()));
@@ -143,51 +151,39 @@ public class InputSizeFrame extends JFrame {
             dispose();
         });
 
-        this.add(createDimensionButton);
-        createDimensionButton.setVisible(true);
+        this.add(this.createDimensionButton);
+        this.createDimensionButton.setVisible(true);
 
-        ruButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Config.getInstance().setLanguage(Language.RU);
-                labelLang.setText(Localisation.LanguageLabelText());
-                label.setText(Localisation.SetSizeBoardText());
-                setTitle(Localisation.SetBoardParametersText());
-                labelHeight.setText(Localisation.CellsInHeightText());
-                minimalHeightLabel.setText(Localisation.MinimalHeightText());
-                labelWidth.setText(Localisation.CellsInWidthText());
-                minimalHeightLabel.setText(Localisation.MinimalWidthText());
-                sizeCellLabel.setText(Localisation.CellSizeText());
-                timeSleepLabel.setText(Localisation.GenerationPauseText());
-                allGenerationRadioButton.setText(Localisation.AllStageCellText());
-                createDimensionButton.setText(Localisation.ApplyText());
-            }
+        ruButton.addActionListener(e -> {
+            Config.getInstance().setLanguage(Language.RU);
+            reSetText();
         });
 
-        engButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Config.getInstance().setLanguage(Language.ENG);
-                labelLang.setText(Localisation.LanguageLabelText());
-                label.setText(Localisation.SetSizeBoardText());
-                setTitle(Localisation.SetBoardParametersText());
-                labelHeight.setText(Localisation.CellsInHeightText());
-                minimalHeightLabel.setText(Localisation.MinimalHeightText());
-                labelWidth.setText(Localisation.CellsInWidthText());
-                minimalHeightLabel.setText(Localisation.MinimalWidthText());
-                sizeCellLabel.setText(Localisation.CellSizeText());
-                timeSleepLabel.setText(Localisation.GenerationPauseText());
-                allGenerationRadioButton.setText(Localisation.AllStageCellText());
-                createDimensionButton.setText(Localisation.ApplyText());
-            }
+        engButton.addActionListener(e -> {
+            Config.getInstance().setLanguage(Language.ENG);
+            reSetText();
         });
+
+        this.reSetText();
 
         this.pack();
         this.setVisible(true);
 
-
     }
 
+    private void reSetText() {
+        this.setTitle(Localisation.SetBoardParametersText());
+        this.labelLang.setText(Localisation.LanguageLabelText());
+        this.mainLabel.setText(Localisation.SetSizeBoardText());
+        this.labelHeight.setText(Localisation.CellsInHeightText());
+        this.minimalHeightLabel.setText(Localisation.MinimalHeightText());
+        this.labelWidth.setText(Localisation.CellsInWidthText());
+        this.minimalWidthLabel.setText(Localisation.MinimalWidthText());
+        this.sizeCellLabel.setText(Localisation.CellSizeText());
+        this.timeSleepLabel.setText(Localisation.GenerationPauseText());
+        this.allGenerationRadioButton.setText(Localisation.AllStageCellText());
+        this.createDimensionButton.setText(Localisation.ApplyText());
+    }
 
     public boolean isFrameIsRunning() {
         return this.frameIsRunning;
