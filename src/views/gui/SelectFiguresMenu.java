@@ -4,6 +4,7 @@ import any.FigureSelector;
 import models.figures.Figure;
 import models.figures.support.FigureGroups;
 import models.figures.support.FigureTypes;
+import models.figures.support.Localisation;
 
 import javax.swing.*;
 import java.util.HashMap;
@@ -12,7 +13,7 @@ import java.util.Map;
 public class SelectFiguresMenu extends JMenu {
 
     public SelectFiguresMenu(FigureSelector figureSelector) {
-        super("Select");
+        super(Localisation.SelectSubMenuTitle());
 
         JMenu runFigures = new JMenu("" + FigureTypes.RUN);
         runFigures.setVisible(true);

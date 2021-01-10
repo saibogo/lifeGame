@@ -177,4 +177,39 @@ public class Localisation {
             default -> "Apply";
         };
     }
+
+    public static String GameTitle() {
+        return switch (Config.getInstance().getLanguage()) {
+            case RU -> "Игра Жизнь";
+            default -> "Game Life";
+        };
+    }
+
+    public static String SelectSubMenuTitle() {
+        return switch (Config.getInstance().getLanguage()) {
+            case RU -> "Выбрать фигуру";
+            default -> "Select Figure";
+        };
+    }
+
+    public static String GenerationTitle() {
+        return switch (Config.getInstance().getLanguage()) {
+            case RU -> "Поколение ";
+            default -> "Generation ";
+        };
+    }
+
+    public static String BreakMessageText() {
+        return switch (Config.getInstance().getLanguage()) {
+            case RU -> "Прервано";
+            default -> "Broken";
+        };
+    }
+
+    public static String NextActionAskText() {
+        return switch (Config.getInstance().getLanguage()) {
+            case RU -> "Хотите модифицировать колонию?";
+            default -> "Want to modify your colony?";
+        };
+    }
 }
