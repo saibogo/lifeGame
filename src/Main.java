@@ -20,10 +20,10 @@ public class Main {
 
 
         Constants constants = (new Constants.Builder())
-                .setMinimalHeight(10)
-                .setMinimalWidth(10)
-                .setSleepInterval(700)
-                .setSizeCell(20)
+                .setMinimalHeight(20)
+                .setMinimalWidth(20)
+                .setSleepInterval(500)
+                .setSizeCell(18)
                 .build();
 
         Config config = Config.getInstance();

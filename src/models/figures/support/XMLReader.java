@@ -1,5 +1,6 @@
 package models.figures.support;
 
+import any.Config;
 import models.CellsType;
 import models.Constants;
 import models.figures.Figure;
@@ -32,7 +33,7 @@ public class XMLReader {
                 figuresList.add(nodeList.item(i));
             }
         }
-        System.out.println("Найдено " + figuresList.size() + " предполагаемых фигур.");
+        System.out.println(Localisation.FoundString() + figuresList.size() + Localisation.AllegedFiguresString());
         for (Node node : figuresList) {
             System.out.println(node.getNodeName());
             NodeList figureParameters = node.getChildNodes();
@@ -46,17 +47,21 @@ public class XMLReader {
             for (String key : parametersMap.keySet()) {
                 System.out.println(key + " -> " + parametersMap.get(key));
             }
-            System.out.println("Найдено " + parametersMap.size() + " параметров");
+            System.out.println(Localisation.FoundString() + parametersMap.size() + Localisation.ParametersString());
             result.add(parametersMap);
         }
-        System.out.println("Найдено " + result.size() + "кандидатов в фигуры");
+        System.out.println(Localisation.FoundString() + result.size() + Localisation.AllegedFiguresString());
         return result;
     }
 
     public static Figure convertXMLToFigure(Map<String, String> parameters) {
         long width = Long.parseLong(parameters.get(Constants.widthString));
         long height = Long.parseLong(parameters.get(Constants.heightString));
-        String name = parameters.get(Constants.nameString);
+        String name = (Config.getInstance().getLanguage() == Language.RU) ?
+                parameters.get(Constants.nameString) : parameters.get(Constants.nameStringEng);
+        if (name == null) {
+            name = "";
+        }
 
 
         FigureTypes figureType = switch (parameters.get(Constants.typeString)) {

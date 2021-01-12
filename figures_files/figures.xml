@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalogue>
     <figure>
-        <name>Квадрат</name>
+        <name>Блок</name>
+        <nameEng>Block</nameEng>
         <width>2</width>
         <height>2</height>
         <type>STABLE</type>
@@ -13,6 +14,7 @@
     </figure>
     <figure>
         <name>Ромб</name>
+        <nameEng>Rhombus</nameEng>
         <width>3</width>
         <height>3</height>
         <type>STABLE</type>
@@ -25,6 +27,7 @@
     </figure>
     <figure>
         <name>Левонаправленный глайдер</name>
+        <nameEng>Left direction glider</nameEng>
         <width>3</width>
         <height>3</height>
         <type>RUN</type>
@@ -36,7 +39,8 @@
         </view>
     </figure>
     <figure>
-        <name>Правонаправленный глайдер</name>
+        <name>Right direction glider</name>
+        <nameEng>Right-hand glider</nameEng>
         <width>3</width>
         <height>3</height>
         <type>RUN</type>
@@ -49,6 +53,7 @@
     </figure>
     <figure>
         <name>Верхненаправленный глайдер</name>
+        <nameEng>Up direction glider</nameEng>
         <width>3</width>
         <height>3</height>
         <type>RUN</type>
@@ -61,6 +66,7 @@
     </figure>
     <figure>
         <name>Нижненаправленный глайдер</name>
+        <nameEng>Down direction glider</nameEng>
         <width>3</width>
         <height>3</height>
         <type>RUN</type>

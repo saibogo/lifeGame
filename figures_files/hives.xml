@@ -2,6 +2,7 @@
 <catalogue>
     <figure>
         <name>Горизонтальный улей</name>
+        <nameEng>Horizontal hive</nameEng>
         <width>4</width>
         <height>3</height>
         <type>STABLE</type>
@@ -14,6 +15,7 @@
     </figure>
     <figure>
         <name>Вертикальный улей</name>
+        <nameEng>Vertical hive</nameEng>
         <width>3</width>
         <height>4</height>
         <type>STABLE</type>
@@ -27,6 +29,7 @@
     </figure>
     <figure>
         <name>Праводиагональный улей</name>
+        <nameEng>Right diagonal hive</nameEng>
         <width>3</width>
         <height>3</height>
         <type>STABLE</type>
@@ -39,6 +42,7 @@
     </figure>
     <figure>
         <name>Леводиагональный улей</name>
+        <nameEng>Left diagonal hive</nameEng>
         <width>3</width>
         <height>3</height>
         <type>STABLE</type>
@@ -51,6 +55,7 @@
     </figure>
     <figure>
         <name>Вертикальный пульсирующий улей</name>
+        <nameEng>Vertical pulsating hive</nameEng>
         <width>5</width>
         <height>10</height>
         <type>PULSE</type>
@@ -70,6 +75,7 @@
     </figure>
     <figure>
         <name>Горизонтальный пульсирующий улей</name>
+        <nameEng>Horizontal pulsating hive</nameEng>
         <width>10</width>
         <height>5</height>
         <type>PULSE</type>

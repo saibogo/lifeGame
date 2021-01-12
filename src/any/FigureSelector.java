@@ -2,6 +2,7 @@ package any;
 
 import models.figures.*;
 import models.figures.any_figures.Pulsar;
+import models.figures.support.Localisation;
 import models.figures.support.XMLReader;
 import org.xml.sax.SAXException;
 
@@ -20,9 +21,9 @@ public class FigureSelector {
 
         try {
             List<Figure> figureList =  XMLReader.convertXMLToFiguresList();
-            System.out.println("Всего загружено фигур " + figureList.size());
+            System.out.println(Localisation.AllFiguresLoadedString() + figureList.size());
             for (Figure figure: figureList) {
-                System.out.println("Получена фигура " + figure.getFigureName());
+                System.out.println(Localisation.GetFigureString() + figure.getFigureName());
                 this.allFiguresList.add(figure);
             }
         } catch (IOException | SAXException | ParserConfigurationException e) {

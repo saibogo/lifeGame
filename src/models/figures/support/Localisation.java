@@ -212,4 +212,46 @@ public class Localisation {
             default -> "Want to modify your colony?";
         };
     }
+
+    public static String FoundString() {
+        return switch (Config.getInstance().getLanguage()) {
+            case RU -> "Найдено ";
+            default -> "Found ";
+        };
+    }
+
+    public static String AllegedFiguresString() {
+        return switch (Config.getInstance().getLanguage()) {
+            case RU -> " предполагаемых фигур.";
+            default -> " alleged figures.";
+        };
+    }
+
+    public static String ParametersString() {
+        return switch (Config.getInstance().getLanguage()) {
+            case RU -> " параметров.";
+            default -> " parameters.";
+        };
+    }
+
+    public static String FoundFileString() {
+        return switch (Config.getInstance().getLanguage()) {
+            case RU -> "Найден файл ";
+            default -> "Found file ";
+        };
+    }
+
+    public static String AllFiguresLoadedString() {
+        return switch (Config.getInstance().getLanguage()) {
+            case RU -> "Всего загружено фигур ";
+            default -> "All figures loaded ";
+        };
+    }
+
+    public static String GetFigureString() {
+        return switch (Config.getInstance().getLanguage()) {
+            case RU -> "Получена фигура ";
+            default -> "Get figure ";
+        };
+    }
 }

@@ -5,6 +5,7 @@ public class Constants {
     public static String redString = (char)27 + "[31m";
     public static String whiteString = (char)27 + "[37m";
     public static final String nameString = "name";
+    public static final String nameStringEng = "nameEng";
     public static final String widthString = "width";
     public static final String heightString = "height";
     public static final String typeString = "type";
