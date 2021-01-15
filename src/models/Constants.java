@@ -20,6 +20,7 @@ public class Constants {
     public static final String hivesGroupString = "HIVES";
     public static final String sectorsGroupString = "SECTORS";
     public static final String pulsedHivesGroup = "PULSED_HIVES";
+    public static final String bargesGroup = "BARGES";
 
 
     private long minimalHeight;

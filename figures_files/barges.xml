@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue>
+    <figure>
+        <name>Коробка</name>
+        <nameEng>Box</nameEng>
+        <width>3</width>
+        <height>3</height>
+        <type>STABLE</type>
+        <group>BARGES</group>
+        <view>
+            _#_
+            #_#
+            _#_
+        </view>
+    </figure>
+    <figure>
+        <name>Леводиагональная лодка</name>
+        <nameEng>Left diagonal boat</nameEng>
+        <width>4</width>
+        <height>4</height>
+        <type>STABLE</type>
+        <group>BARGES</group>
+        <view>
+            _#__
+            #_#_
+            _#_#
+            __#_
+        </view>
+    </figure>
+    <figure>
+        <name>Праводиагональная лодка</name>
+        <nameEng>Right diagonal boat</nameEng>
+        <width>4</width>
+        <height>4</height>
+        <type>STABLE</type>
+        <group>BARGES</group>
+        <view>
+            __#_
+            _#_#
+            #_#_
+            _#__
+        </view>
+    </figure>
+    <figure>
+        <name>Леводиагональная длинная лодка</name>
+        <nameEng>Left diagonal large boat</nameEng>
+        <width>5</width>
+        <height>5</height>
+        <type>STABLE</type>
+        <group>BARGES</group>
+        <view>
+            _#___
+            #_#__
+            _#_#_
+            __#_#
+            ___#_
+        </view>
+    </figure>
+    <figure>
+        <name>Праводиагональная длинная лодка</name>
+        <nameEng>Right diagonal large boat</nameEng>
+        <width>5</width>
+        <height>5</height>
+        <type>STABLE</type>
+        <group>BARGES</group>
+        <view>
+            ___#_
+            __#_#
+            _#_#_
+            #_#__
+            _#___
+        </view>
+    </figure>
+    <figure>
+        <name>Леводиагональная баржа</name>
+        <nameEng>Left diagonal barge</nameEng>
+        <width>6</width>
+        <height>6</height>
+        <type>STABLE</type>
+        <group>BARGES</group>
+        <view>
+            _#____
+            #_#___
+            _#_#__
+            __#_#_
+            ___#_#
+            ____#_
+        </view>
+    </figure>
+    <figure>
+        <name>Праводиагональная баржа</name>
+        <nameEng>Right diagonal barge</nameEng>
+        <width>6</width>
+        <height>6</height>
+        <type>STABLE</type>
+        <group>BARGES</group>
+        <view>
+            ____#_
+            ___#_#
+            __#_#_
+            _#_#__
+            #_#___
+            _#____
+        </view>
+    </figure>
+</catalogue>

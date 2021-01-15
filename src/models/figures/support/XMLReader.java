@@ -77,6 +77,7 @@ public class XMLReader {
             case Constants.hivesGroupString -> FigureGroups.HIVES;
             case Constants.sectorsGroupString -> FigureGroups.SECTORS;
             case Constants.pulsedHivesGroup -> FigureGroups.PULSED_HIVES;
+            case Constants.bargesGroup -> FigureGroups.BARGES;
             default -> FigureGroups.NONE;
         };
 

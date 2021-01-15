@@ -56,5 +56,14 @@ public enum FigureGroups {
                 default -> "Pulsed hives";
             };
         }
+    },
+    BARGES {
+        @Override
+        public String toString() {
+            return switch (Config.getInstance().getLanguage()) {
+                case RU -> "Баржи";
+                default -> "Barged";
+            };
+        }
     }
 }

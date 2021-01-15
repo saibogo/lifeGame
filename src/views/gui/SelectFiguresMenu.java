@@ -58,6 +58,11 @@ public class SelectFiguresMenu extends JMenu {
         pulseFigures.add(pulsedHivesGroup);
         figuresInGroups.put(FigureGroups.PULSED_HIVES, pulsedHivesGroup);
 
+        JMenu bargesGroup = new JMenu("" + FigureGroups.BARGES);
+        bargesGroup.setVisible(true);
+        stableFigures.add(bargesGroup);
+        figuresInGroups.put(FigureGroups.BARGES, bargesGroup);
+
 
         for (int i = 0; i < figureSelector.getFiguresCount(); i++) {
             JMenuItem figureItem = new JMenuItem(figureSelector.getAllFiguresNames().get(i));
