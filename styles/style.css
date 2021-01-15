@@ -1,8 +1,48 @@
 /* Based Style */
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     cursor: cell;
     background-image: url("../img/background.jpg");
+}
+
+#navigation_p {
+    width: 100%;
+    height: 160px;
+}
+
+#self_link {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    margin-top: 75%;
+}
+
+#this_site {
+    width: 150px;
+    height: 150px;
+    margin-left: 10%;
+    border-radius: 20px;
+}
+
+
+#coder_logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    float: left;
+}
+
+#main_row {
+    width: 100%;
+}
+
+.main_navigation {
+    width: 200px;
+    height: 200px;
+    margin: 5%;
 }
 
 footer {
