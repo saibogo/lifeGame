@@ -2,6 +2,7 @@
 <catalogue>
     <figure>
         <name>Вертикальный семафор</name>
+        <nameEng>Vertical semaphore</nameEng>
         <width>1</width>
         <height>3</height>
         <type>PULSE</type>
@@ -14,6 +15,7 @@
     </figure>
     <figure>
         <name>Горизонтальный семафор</name>
+        <nameEng>Horizontal semaphore</nameEng>
         <width>3</width>
         <height>1</height>
         <type>PULSE</type>
@@ -24,6 +26,7 @@
     </figure>
     <figure>
         <name>Открытый перекресток</name>
+        <nameEng>Open crossroad</nameEng>
         <width>9</width>
         <height>9</height>
         <type>PULSE</type>
@@ -42,6 +45,7 @@
     </figure>
     <figure>
         <name>Закрытый перекресток</name>
+        <nameEng>Close crossroad</nameEng>
         <width>9</width>
         <height>9</height>
         <type>PULSE</type>
@@ -60,6 +64,7 @@
     </figure>
     <figure>
         <name>Праводиагональный турникет</name>
+        <nameEng>Right diagonal turnstile</nameEng>
         <width>4</width>
         <height>4</height>
         <type>PULSE</type>
@@ -73,6 +78,7 @@
     </figure>
     <figure>
         <name>Леводиагональный турникет</name>
+        <nameEng>Left diagonal turnstile</nameEng>
         <width>4</width>
         <height>4</height>
         <type>PULSE</type>
@@ -86,6 +92,7 @@
     </figure>
     <figure>
         <name>Двухполосный вертикальный семафор</name>
+        <nameEng>Two-way vertical semaphore</nameEng>
         <width>1</width>
         <height>7</height>
         <type>PULSE</type>
@@ -102,6 +109,7 @@
     </figure>
     <figure>
         <name>Двухполосный горизонтальный семафор</name>
+        <nameEng>Two-way horizontal semaphore</nameEng>
         <width>7</width>
         <height>1</height>
         <type>PULSE</type>

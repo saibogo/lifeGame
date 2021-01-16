@@ -2,6 +2,7 @@ package views.gui;
 
 import any.FigureSelector;
 import models.Board;
+import models.figures.support.Localisation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class BoardCreatorFrame extends JFrame {
     private boolean gameDone = false;
 
     public BoardCreatorFrame(Board board) throws InterruptedException {
-        super("Начальное положение клеток");
+        super(Localisation.startPositionCells());
         FigureSelector figureSelector = new FigureSelector();
         this.createCanvasGui = new CreateCanvasGui(board, figureSelector);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -29,11 +30,11 @@ public class BoardCreatorFrame extends JFrame {
 
 
 
-        JMenu actionMenu = new JMenu("Action");
+        JMenu actionMenu = new JMenu(Localisation.ActionsMenuTitle());
         menuBar.add(actionMenu);
         actionMenu.setVisible(true);
 
-        JMenuItem runItem = new JMenuItem("Run");
+        JMenuItem runItem = new JMenuItem(Localisation.RunSubMenuTitle());
         actionMenu.add(runItem);
         runItem.setVisible(true);
 
@@ -44,7 +45,7 @@ public class BoardCreatorFrame extends JFrame {
 
         });
 
-        JMenuItem rotateToLeft = new JMenuItem("Вращать поле ↺");
+        JMenuItem rotateToLeft = new JMenuItem(Localisation.RotateBoardSubMenuTitle());
         actionMenu.add(rotateToLeft);
         rotateToLeft.setVisible(true);
 
@@ -53,7 +54,7 @@ public class BoardCreatorFrame extends JFrame {
             repaintBoard();
         });
 
-        JMenuItem rotateToRight = new JMenuItem("Вращать поле ↷");
+        JMenuItem rotateToRight = new JMenuItem(Localisation.RotateReverseBoardSubMenuTitle());
         actionMenu.add(rotateToRight);
         rotateToRight.setVisible(true);
 
@@ -62,24 +63,24 @@ public class BoardCreatorFrame extends JFrame {
             repaintBoard();
         });
 
-        JMenuItem exitItem = new JMenuItem("Exit");
+        JMenuItem exitItem = new JMenuItem(Localisation.ExitSubMenuTitle());
         actionMenu.add(exitItem);
         exitItem.setVisible(true);
 
         exitItem.addActionListener(actionEvent -> exit(0));
 
-        JMenu helpMenu = new JMenu("Help");
+        JMenu helpMenu = new JMenu(Localisation.HelpSubMenuTitle());
         menuBar.add(helpMenu);
         helpMenu.setVisible(true);
 
-        JMenuItem rulesItem = new JMenuItem("Rules");
+        JMenuItem rulesItem = new JMenuItem(Localisation.RulesSubMenuTitle());
         helpMenu.add(rulesItem);
         rulesItem.setVisible(true);
 
         rulesItem.addActionListener(actionEvent -> showRules()
         );
 
-        JMenuItem interfaceItem = new JMenuItem("Interface");
+        JMenuItem interfaceItem = new JMenuItem(Localisation.InterfaceSubMenuTitle());
         helpMenu.add(interfaceItem);
         interfaceItem.setVisible(true);
         interfaceItem.addActionListener(e -> {
@@ -129,19 +130,10 @@ public class BoardCreatorFrame extends JFrame {
     }
 
     private void showRules(){
-        JOptionPane.showMessageDialog(this, "Новая клетка рождается," +
-                " если у нее ровно три соседа.\nЕсли у клетки меньше двух соседей, или больше трех  - клетка умирает");
+        JOptionPane.showMessageDialog(this, Localisation.RulesMessageText());
     }
 
     private void showInterfaceOption() {
-        JOptionPane.showMessageDialog(this, "Создать/удалить клетку - левая кнопка мышки\n" +
-                "Select - выбрать фигуру из каталога для вставки\n" +
-                "Вставить готовую фигуру - правая кнопка мышки\n" +
-                "Action -> Run  - запустить эволюцию колонии клеток" +
-                "SPACE - прервать эволюцию колонии\n" +
-                "Цвета:\n" +
-                "Живая клетка - красный\n" +
-                "Умирающая - серый\n" +
-                "Зародившаяся - зеленый");
+        JOptionPane.showMessageDialog(this, Localisation.InterfaceMessageText());
     }
 }

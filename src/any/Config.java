@@ -1,5 +1,7 @@
 package any;
 
+import models.figures.support.Language;
+
 import java.awt.*;
 
 public class Config {
@@ -12,6 +14,7 @@ public class Config {
     private final Color bornCellColor;
     private final Color deadCellColor;
     private boolean viewAllStepGeneration;
+    private Language language;
 
     private Config() {
         this.lineColor = Color.BLACK;
@@ -20,6 +23,7 @@ public class Config {
         this.backgroundColor = Color.YELLOW;
         this.deadCellColor = Color.GRAY;
         this.viewAllStepGeneration = true;
+        this.language = Language.RU;
     }
 
     public Color getLineColor() {
@@ -55,5 +59,13 @@ public class Config {
 
     public void setViewAllStepGeneration(boolean viewAllStepGeneration) {
         this.viewAllStepGeneration = viewAllStepGeneration;
+    }
+
+    public Language getLanguage() {
+        return this.language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
     }
 }

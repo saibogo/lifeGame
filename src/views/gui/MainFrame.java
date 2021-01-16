@@ -1,5 +1,7 @@
 package views.gui;
 
+import models.figures.support.Localisation;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -7,11 +9,11 @@ import java.awt.event.KeyListener;
 
 public class MainFrame extends JFrame {
 
-    private GameCanvas canvas;
+    private final GameCanvas canvas;
     private boolean spacePressed = false;
 
     public MainFrame(GameCanvas canvas) throws HeadlessException {
-        super("Игра ЖИЗНЬ");
+        super(Localisation.GameTitle());
         this.canvas = canvas;
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);

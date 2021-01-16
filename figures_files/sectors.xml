@@ -2,6 +2,7 @@
 <catalogue>
     <figure>
         <name>Круг</name>
+        <nameEng>Circle</nameEng>
         <width>4</width>
         <height>4</height>
         <type>STABLE</type>
@@ -15,6 +16,7 @@
     </figure>
     <figure>
         <name>Первый сектор</name>
+        <nameEng>First sector</nameEng>
         <width>3</width>
         <height>3</height>
         <type>STABLE</type>
@@ -27,6 +29,7 @@
     </figure>
     <figure>
         <name>Второй сектор</name>
+        <nameEng>Second sector</nameEng>
         <width>3</width>
         <height>3</height>
         <type>STABLE</type>
@@ -39,6 +42,7 @@
     </figure>
     <figure>
         <name>Третий сектор</name>
+        <nameEng>Third sector</nameEng>
         <width>3</width>
         <height>3</height>
         <type>STABLE</type>
@@ -51,6 +55,7 @@
     </figure>
     <figure>
         <name>Четвертый сектор</name>
+        <nameEng>Fourth sector</nameEng>
         <width>3</width>
         <height>3</height>
         <type>STABLE</type>
@@ -63,6 +68,7 @@
     </figure>
     <figure>
         <name>Правая верхняя полусфера</name>
+        <nameEng>Upper right hemisphere</nameEng>
         <width>4</width>
         <height>4</height>
         <type>STABLE</type>
@@ -76,6 +82,7 @@
     </figure>
     <figure>
         <name>Правая нижняя полусфера</name>
+        <nameEng>Lower right hemisphere</nameEng>
         <width>4</width>
         <height>4</height>
         <type>STABLE</type>
@@ -89,6 +96,7 @@
     </figure>
     <figure>
         <name>Левая верхняя полусфера</name>
+        <nameEng>Upper left hemisphere</nameEng>
         <width>4</width>
         <height>4</height>
         <type>STABLE</type>
@@ -102,6 +110,7 @@
     </figure>
     <figure>
         <name>Левая нижняя полусфера</name>
+        <nameEng>Lower left hemisphere</nameEng>
         <width>4</width>
         <height>4</height>
         <type>STABLE</type>
