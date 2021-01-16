@@ -1,16 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+
 * {
     box-sizing: border-box;
     background-color:LavenderBlush;
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-image: url("../img/background.jpg");
-
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
    
 
 h1 {
     text-align: center;
-    color: MediumBlue;
+    color: DarkSlateBlue;
 }
 
 .row {
@@ -91,7 +93,7 @@ p#author:hover {
 
 .item_description {
     margin-top: 0%;
-    height: 160px;
+    height: 200px;
     background-image: url("../img/item_background.jpg");
 }
 
