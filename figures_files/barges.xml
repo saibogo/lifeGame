@@ -103,4 +103,38 @@
             _#____
         </view>
     </figure>
+    <figure>
+        <name>Леводиагональная длинная баржа</name>
+        <nameEng>Left diagonal large barge</nameEng>
+        <width>7</width>
+        <height>7</height>
+        <type>STABLE</type>
+        <group>BARGES</group>
+        <view>
+            _#_____
+            #_#____
+            _#_#___
+            __#_#__
+            ___#_#_
+            ____#_#
+            _____#_
+        </view>
+    </figure>
+    <figure>
+        <name>Праводиагональная длинная баржа</name>
+        <nameEng>Right diagonal large barge</nameEng>
+        <width>7</width>
+        <height>7</height>
+        <type>STABLE</type>
+        <group>BARGES</group>
+        <view>
+            _____#_
+            ____#_#
+            ___#_#_
+            __#_#__
+            _#_#___
+            #_#____
+            _#_____
+        </view>
+    </figure>
 </catalogue>
