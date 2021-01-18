@@ -65,5 +65,14 @@ public enum FigureGroups {
                 default -> "Barged";
             };
         }
+    },
+    SHIPS {
+        @Override
+        public String toString() {
+            return switch (Config.getInstance().getLanguage()) {
+                case RU -> "Корабли";
+                default -> "Ships";
+            };
+        }
     }
 }

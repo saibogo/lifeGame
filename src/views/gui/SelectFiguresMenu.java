@@ -63,6 +63,11 @@ public class SelectFiguresMenu extends JMenu {
         stableFigures.add(bargesGroup);
         figuresInGroups.put(FigureGroups.BARGES, bargesGroup);
 
+        JMenu shipsGroup = new JMenu("" + FigureGroups.SHIPS);
+        shipsGroup.setVisible(true);
+        stableFigures.add(shipsGroup);
+        figuresInGroups.put(FigureGroups.SHIPS, shipsGroup);
+
 
         for (int i = 0; i < figureSelector.getFiguresCount(); i++) {
             JMenuItem figureItem = new JMenuItem(figureSelector.getAllFiguresNames().get(i));
